@@ -1,6 +1,7 @@
 package test.connect.myapplication;
 
 import static test.connect.myapplication.api.ApiClientFactory.GetPhotoApi;
+import static test.connect.myapplication.api.ApiClientFactory.GetUserApi;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.Photo;
+import test.connect.myapplication.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         TextView apiText1 = findViewById(R.id.activity_main_textView1);
         apiText1.setMovementMethod(new ScrollingMovementMethod());
 
-        Button photoButton = findViewById(R.id.activity_main_button_for_photo);
-        EditText photoNumInput = findViewById(R.id.activity_main_photoNum_input);
+        Button submitButton = findViewById(R.id.activity_main_button_for_photo);
+        EditText userNumInput = findViewById(R.id.activity_main_photoNum_input);
 
 //        GetPhotoApi().getFirstPhoto().enqueue(new SlimCallback<Photo>(responsePhoto -> {
 //            apiText1.setText(responsePhoto.printable());
@@ -39,11 +41,21 @@ public class MainActivity extends AppCompatActivity {
 //        }, "multiplePhotosApi"));
 
 
-        photoButton.setOnClickListener(new View.OnClickListener() {
+//        photoButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                GetPhotoApi().getPhotoByNum(photoNumInput.getText().toString()).enqueue(new SlimCallback<Photo>(photo ->{
+//                    apiText1.setText(photo.printable());
+//                }));
+//            }
+//        });
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GetPhotoApi().getPhotoByNum(photoNumInput.getText().toString()).enqueue(new SlimCallback<Photo>(photo ->{
-                    apiText1.setText(photo.printable());
+                GetUserApi().getFirstUser().enqueue(new SlimCallback<User>(user ->{
+                    apiText1.setText(user.printable());
+
                 }));
             }
         });

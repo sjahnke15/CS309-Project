@@ -27,4 +27,8 @@ public class ApiClientFactory {
         return GetApiClientSeed().create(PhotoApi.class);
     }
 
+    public static UserApi GetUserApi(){
+        return GetApiClientSeed().create(UserApi.class);
+    }
+
 }
