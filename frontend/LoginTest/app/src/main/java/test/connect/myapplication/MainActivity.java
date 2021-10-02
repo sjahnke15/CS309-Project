@@ -4,6 +4,8 @@ import static test.connect.myapplication.api.ApiClientFactory.GetPhotoApi;
 import static test.connect.myapplication.api.ApiClientFactory.GetUserApi;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -16,7 +18,7 @@ import test.connect.myapplication.model.Photo;
 import test.connect.myapplication.model.User;
 
 public class MainActivity extends AppCompatActivity {
-
+Button btnTemp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
         Button submitButton = findViewById(R.id.activity_main_button_for_photo);
         EditText userNumInput = findViewById(R.id.activity_main_photoNum_input);
+
+        btnTemp =(Button)findViewById(R.id.btnTemp);
+        btnTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this,login_screen.class);
+                startActivity(i);
+            }
+        });
 
 //        GetPhotoApi().getFirstPhoto().enqueue(new SlimCallback<Photo>(responsePhoto -> {
 //            apiText1.setText(responsePhoto.printable());
