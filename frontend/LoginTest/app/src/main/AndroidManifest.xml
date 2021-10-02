@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".signUp"
+            android:exported="true" />
+        <activity
+            android:name=".homeScreen"
+            android:exported="true" />
+        <activity
             android:name=".login_screen"
             android:exported="true" />
         <activity
