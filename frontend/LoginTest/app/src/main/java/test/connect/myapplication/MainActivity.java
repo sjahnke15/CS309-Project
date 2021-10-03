@@ -64,8 +64,8 @@ Button btnTemp;
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GetUserApi().getFirstUser().enqueue(new SlimCallback<User>(user ->{
-                    apiText1.setText(user.printable());
+                GetPhotoApi().getPhotoByNum(userNumInput.getText().toString()).enqueue(new SlimCallback<Photo>(photo ->{
+                    apiText1.setText(photo.printable());
 
                 }));
             }
