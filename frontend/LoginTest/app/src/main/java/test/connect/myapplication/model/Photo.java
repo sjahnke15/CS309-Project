@@ -7,6 +7,7 @@ public class Photo {
     private String url;
     private String thumbnailUrl;
 
+
     public Photo() {
     }
 
@@ -20,6 +21,10 @@ public class Photo {
 
     public int getId() {
         return id;
+    }
+
+    public String getStringId() {
+        return String.valueOf(id);
     }
 
     public void setId(int id) {

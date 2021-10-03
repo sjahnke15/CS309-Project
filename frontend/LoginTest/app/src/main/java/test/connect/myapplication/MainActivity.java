@@ -25,7 +25,9 @@ Button btnTemp;
         setContentView(R.layout.activity_main);
 
         TextView apiText1 = findViewById(R.id.activity_main_textView1);
+        TextView apiText2 = findViewById(R.id.activity_main_validate_input);
         apiText1.setMovementMethod(new ScrollingMovementMethod());
+
 
         Button submitButton = findViewById(R.id.activity_main_button_for_photo);
         EditText userNumInput = findViewById(R.id.activity_main_photoNum_input);
@@ -66,6 +68,9 @@ Button btnTemp;
             public void onClick(View v) {
                 GetPhotoApi().getPhotoByNum(userNumInput.getText().toString()).enqueue(new SlimCallback<Photo>(photo ->{
                     apiText1.setText(photo.printable());
+                    if(userNumInput.getText().toString().equals(photo.getStringId())){
+                        apiText2.setText("Input and ID match");
+                    }
 
                 }));
             }
