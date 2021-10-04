@@ -32,7 +32,11 @@ Button btnTemp;
 
 
         Button submitButton = findViewById(R.id.activity_main_button_for_photo);
-        EditText userNumInput = findViewById(R.id.activity_main_photoNum_input);
+
+
+        EditText userNameInput = findViewById(R.id.activity_main_photoNum_input);
+
+
 
         btnTemp =(Button)findViewById(R.id.btnTemp);
         btnTemp.setOnClickListener(new View.OnClickListener() {
@@ -56,13 +60,26 @@ Button btnTemp;
 //        }, "multiplePhotosApi"));
 
 
-        GetUserApi().getAllUsers().enqueue(new SlimCallback<List<User>>(users->{
-            apiText1.setText("");
-            for (int i = 0; i < users.size(); i++){
-                apiText1.append(users.get(i).printable());
-            }
+//        GetUserApi().getAllUsers().enqueue(new SlimCallback<List<User>>(users->{
+//            apiText1.setText("");
+//            for (int i = 0; i < users.size(); i++){
+//                apiText1.append(users.get(i).printable());
+//            }
+//
+//        }, "multipleUsersApi"));
 
-        }, "multipleUsersApi"));
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetUserApi().getUserByUsername(userNameInput.getText().toString()).enqueue(new SlimCallback<User>(user ->{
+                    apiText1.setText(user.printable());
+                }));
+            }
+        });
+
+
+
 
 
 //        photoButton.setOnClickListener(new View.OnClickListener() {

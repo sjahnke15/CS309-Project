@@ -4,6 +4,8 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
 import test.connect.myapplication.model.Photo;
 import test.connect.myapplication.model.User;
 
@@ -14,4 +16,13 @@ public interface UserApi {
 
     @GET("user/all")
     Call<List<User>> getAllUsers();
+
+    @GET("user/username/{username}")
+    Call<User> getUserByUsername(@Path("username") String username);
+
+    @POST("user/post/{n}/{p}")
+    Call<User> PostUserByPath(@Path("n") String username, @Path("p") String password);
+
 }
+
+
