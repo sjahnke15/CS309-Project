@@ -3,8 +3,17 @@ package test.connect.myapplication.model;
 public class User {
     private String username;
     private String password;
+    private int id;
 
     public User() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -25,7 +34,8 @@ public class User {
 
     public String printable(){
         return "\nUsername: " + this.username
-                + "\nPassword: "+ this.password;
+                + "\nPassword: "+ this.password
+                + "\nID: " + this.id;
     }
 }
 

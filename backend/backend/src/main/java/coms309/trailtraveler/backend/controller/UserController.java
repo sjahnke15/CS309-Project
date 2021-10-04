@@ -22,7 +22,7 @@ public class UserController {
 		return UserRepository.findAll();
 	}
 	
-	@PostMapping("user/post/{n}/{d}")
+	@PostMapping("user/post/{n}/{p}")
 	User postUserByPath(@PathVariable String n, @PathVariable String p) {
 		User u = new User();
 		u.setUsername(n);

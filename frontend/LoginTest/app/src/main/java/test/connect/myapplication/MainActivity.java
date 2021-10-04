@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.List;
+
 import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.Photo;
 import test.connect.myapplication.model.User;
@@ -54,6 +56,15 @@ Button btnTemp;
 //        }, "multiplePhotosApi"));
 
 
+        GetUserApi().getAllUsers().enqueue(new SlimCallback<List<User>>(users->{
+            apiText1.setText("");
+            for (int i = 0; i < users.size(); i++){
+                apiText1.append(users.get(i).printable());
+            }
+
+        }, "multipleUsersApi"));
+
+
 //        photoButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -63,18 +74,20 @@ Button btnTemp;
 //            }
 //        });
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GetPhotoApi().getPhotoByNum(userNumInput.getText().toString()).enqueue(new SlimCallback<Photo>(photo ->{
-                    apiText1.setText(photo.printable());
-                    if(userNumInput.getText().toString().equals(photo.getStringId())){
-                        apiText2.setText("Input and ID match");
-                    }
 
-                }));
-            }
-        });
+
+//        submitButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                GetPhotoApi().getPhotoByNum(userNumInput.getText().toString()).enqueue(new SlimCallback<Photo>(photo ->{
+//                    apiText1.setText(photo.printable());
+//                    if(userNumInput.getText().toString().equals(photo.getStringId())){
+//                        apiText2.setText("Input and ID match");
+//                    }
+//
+//                }));
+//            }
+//        });
 
     }
 }
