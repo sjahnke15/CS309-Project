@@ -35,7 +35,7 @@ Button btn_signUp;
         btn_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GetUserApi().PostUserByPath(appearanceName.getText().toString(), password.getText().toString()).enqueue(new SlimCallback<User>(user ->));
+                GetUserApi().PostUserByPath(appearanceName.getText().toString(), password.getText().toString()).enqueue(new SlimCallback<User>(user ->{}));
                 appearanceName.setText("");
                 //email.setText("");
                 //email.getText().toString()
