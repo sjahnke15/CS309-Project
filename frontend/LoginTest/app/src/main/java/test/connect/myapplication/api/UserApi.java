@@ -20,8 +20,8 @@ public interface UserApi {
     @GET("user/username/{username}")
     Call<User> getUserByUsername(@Path("username") String username);
 
-    @POST("user/post/{n}/{p}")
-    Call<User> PostUserByPath(@Path("n") String username, @Path("p") String password);
+    @POST("user/post/{e}/{n}/{p}")
+    Call<User> PostUserByPath(@Path("e") String email, @Path("n") String username, @Path("p") String password);
 
 }
 

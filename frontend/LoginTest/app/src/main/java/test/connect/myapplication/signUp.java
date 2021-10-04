@@ -28,17 +28,19 @@ Button btn_signUp;
                 startActivity(back);
             }
         });
+
         EditText appearanceName = findViewById(R.id.txt_appearanceName);
         EditText email = findViewById(R.id.txt_email_In);
         EditText password = findViewById(R.id.txt_password_In);
+
+
         btn_signUp = (Button)findViewById(R.id.btn_signUp);
         btn_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GetUserApi().PostUserByPath(appearanceName.getText().toString(), password.getText().toString()).enqueue(new SlimCallback<User>(user ->{}));
+                GetUserApi().PostUserByPath(email.getText().toString(), appearanceName.getText().toString(), password.getText().toString()).enqueue(new SlimCallback<User>(user ->{}));
                 appearanceName.setText("");
-                //email.setText("");
-                //email.getText().toString()
+                email.setText("");
                 password.setText("");
                 Intent backToLogin = new Intent(signUp.this,login_screen.class);
                 startActivity(backToLogin);

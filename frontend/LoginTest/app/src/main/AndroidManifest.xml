@@ -19,11 +19,12 @@
             android:name=".homeScreen"
             android:exported="true" />
         <activity
-            android:name=".login_screen"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"/>
+        <activity
+            android:name=".login_screen"
+            android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
