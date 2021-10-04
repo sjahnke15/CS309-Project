@@ -40,6 +40,8 @@ Button btn_signUp;
                 //email.setText("");
                 //email.getText().toString()
                 password.setText("");
+                Intent backToLogin = new Intent(signUp.this,login_screen.class);
+                startActivity(backToLogin);
             }
         });
     }
