@@ -26,9 +26,6 @@ public class User {
 	private String username;
 	private String password;
 	
-	/*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<User> users = new HashSet<>(); */
-	
 	public User() {
 		
 	}

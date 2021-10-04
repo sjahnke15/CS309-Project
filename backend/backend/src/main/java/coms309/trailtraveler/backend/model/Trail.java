@@ -2,7 +2,7 @@ package coms309.trailtraveler.backend.model;
 
 import java.util.HashSet;
 import java.util.Set;
-
+import coms309.trailtraveler.backend.model.Review;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,15 +19,15 @@ public class Trail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "trail_id")
+	@Column(name = "trail_id")
 	private int id;
 	
 	private String name;
 	private int difficulty;
 	
-//	//Creates a hashset that will hold all of the reviews for the given Trail
-//	@OneToMany(mappedBy = "trail", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	private Set<Review> reviews = new HashSet<>(); 
+//	Creates a hashset that will hold all of the reviews for the given Trail
+	@OneToMany(mappedBy = "trail", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Review> reviews = new HashSet<>(); 
 	
 	/* Constructor */
 	public Trail() {

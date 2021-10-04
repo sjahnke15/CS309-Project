@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import coms309.trailtraveler.backend.model.Trail;
 
 @Entity
 @Table(name = "review")
@@ -17,9 +18,9 @@ public class Review {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int reviewID;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "trail_id")
-//	private Trail trail;
+	@ManyToOne
+	@JoinColumn(name = "trail_id")
+	private Trail trail;
 	
 	private String text;
 	private int rating;
