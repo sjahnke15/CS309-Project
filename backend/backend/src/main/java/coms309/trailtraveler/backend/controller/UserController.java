@@ -22,6 +22,21 @@ public class UserController {
 		return UserRepository.findAll();
 	}
 	
+	@GetMapping("user/username/{username}")
+	User getUserByUsername(@PathVariable String username) {
+		List<User> users = UserRepository.findAll();
+		
+		User u;
+		for(int i = 0; i < users.size(); i++) {
+			if(users.get(i).getUsername().equals(username)) {
+				u = users.get(i);
+				return u;
+			}
+		}
+		
+		return null;
+	}
+	
 	@PostMapping("user/post/{n}/{p}")
 	User postUserByPath(@PathVariable String n, @PathVariable String p) {
 		User u = new User();
