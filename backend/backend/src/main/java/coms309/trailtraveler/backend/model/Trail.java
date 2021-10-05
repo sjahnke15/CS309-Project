@@ -24,13 +24,14 @@ public class Trail {
 	@Column(name = "trail_id")
 	private int id;
 	
+	@OneToMany(mappedBy = "trail", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Review> reviews  = new HashSet<>();
+	
 	private String name;
 	private int difficulty;
 	
 	/* Constructor */
-	public Trail() {
-		
-	}
+	public Trail() {}
 	
 	public int getId() {
 		return id;
@@ -54,5 +55,13 @@ public class Trail {
 	
 	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
+	}
+
+	public Set<Review> getReviews() {
+		return reviews;
+	}
+	
+	public void addReview(Review r) {
+		reviews.add(r);
 	}
 }

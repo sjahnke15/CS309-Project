@@ -19,6 +19,10 @@ public class Review {
 	@Column(name = "review_id")
 	private int reviewID;
 	
+	@ManyToOne
+	@JoinColumn(name = "trail_id")
+	private Trail trail;
+	
 	private String text;
 	private int rating;
 	
@@ -42,5 +46,13 @@ public class Review {
 
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+
+	public Trail getTrail() {
+		return trail;
+	}
+
+	public void setTrail(Trail trail) {
+		this.trail = trail;
 	}
 }
