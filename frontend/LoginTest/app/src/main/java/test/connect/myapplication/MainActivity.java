@@ -1,6 +1,5 @@
 package test.connect.myapplication;
 
-import static test.connect.myapplication.api.ApiClientFactory.GetPhotoApi;
 import static test.connect.myapplication.api.ApiClientFactory.GetUserApi;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,10 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.List;
-
 import test.connect.myapplication.api.SlimCallback;
-import test.connect.myapplication.model.Photo;
 import test.connect.myapplication.model.User;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,17 +43,7 @@ Button btnTemp;
             }
         });
 
-//        GetPhotoApi().getFirstPhoto().enqueue(new SlimCallback<Photo>(responsePhoto -> {
-//            apiText1.setText(responsePhoto.printable());
-//        }));
 
-//        GetPhotoApi().getAllPhoto().enqueue(new SlimCallback<List<Photo>>(photos->{
-//            apiText1.setText("");
-//            for (int i = 0; i < photos.size(); i++){
-//                apiText1.append(photos.get(i).printable());
-//            }
-//
-//        }, "multiplePhotosApi"));
 
 
 //        GetUserApi().getAllUsers().enqueue(new SlimCallback<List<User>>(users->{
@@ -78,33 +64,7 @@ Button btnTemp;
             }
         });
 
-
-
-
-
-//        photoButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                GetPhotoApi().getPhotoByNum(photoNumInput.getText().toString()).enqueue(new SlimCallback<Photo>(photo ->{
-//                    apiText1.setText(photo.printable());
-//                }));
-//            }
-//        });
-
-
-
-//        submitButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                GetPhotoApi().getPhotoByNum(userNumInput.getText().toString()).enqueue(new SlimCallback<Photo>(photo ->{
-//                    apiText1.setText(photo.printable());
-//                    if(userNumInput.getText().toString().equals(photo.getStringId())){
-//                        apiText2.setText("Input and ID match");
-//                    }
-//
-//                }));
-//            }
-//        });
+        
 
     }
 }
