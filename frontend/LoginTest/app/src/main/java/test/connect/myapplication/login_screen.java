@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.User;
@@ -40,15 +41,14 @@ Button button_signup;
                             Intent i = new Intent(login_screen.this, homeScreen.class);
                             startActivity(i);
                         }
-                        else{
-                            loginError.setText("Invalid Username or Password. Please Try Again.");
-                            userLoginInput.setText("");
-                            userPassInput.setText("");
-                        }
                     }
+                    loginError.setText("Invalid Username or Password. Please Try Again.");
+                    userLoginInput.setText("");
+                    userPassInput.setText("");
 
 
                 }));
+
 
                 GetUserApi().getUserByEmail(userLoginInput.getText().toString()).enqueue(new SlimCallback<User>(user -> {
                     if(userLoginInput.getText().toString().equals(user.getEmail())) {
@@ -56,12 +56,10 @@ Button button_signup;
                             Intent i = new Intent(login_screen.this, homeScreen.class);
                             startActivity(i);
                         }
-                        else{
-                            loginError.setText("Invalid Username or Password. Please Try Again.");
-                            userLoginInput.setText("");
-                            userPassInput.setText("");
-                        }
                     }
+                    loginError.setText("Invalid Username or Password. Please Try Again.");
+                    userLoginInput.setText("");
+                    userPassInput.setText("");
 
 
                 }));
