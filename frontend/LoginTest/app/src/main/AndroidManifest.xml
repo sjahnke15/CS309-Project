@@ -13,15 +13,6 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".map"
-            android:exported="true" />
-        <activity
-            android:name=".trailHistory"
-            android:exported="true" />
-        <activity
-            android:name=".userInfo"
-            android:exported="true" />
-        <activity
             android:name=".signUp"
             android:exported="true" />
         <activity

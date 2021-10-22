@@ -10,8 +10,7 @@ import android.widget.ImageButton;
 
 public class homeScreen extends AppCompatActivity {
 Button btnBack;
-ImageButton btnAccount = (ImageButton) findViewById(R.id.imgAccount);
-ImageButton map = (ImageButton)findViewById(R.id.imgMap);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,21 +25,21 @@ ImageButton map = (ImageButton)findViewById(R.id.imgMap);
             }
         });
 
-        btnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent user = new Intent(homeScreen.this, userInfo.class);
-                startActivity(user);
-            }
-        });
+       // imgAccount.setOnClickListener(new View.OnClickListener() {
+       //     @Override
+       //     public void onClick(View view) {
+       //         Intent user = new Intent(homeScreen.this, userInfo.class);
+       //         startActivity(user);
+        //    }
+       // });
 
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent toMap = new Intent(homeScreen.this,map.class);
-                startActivity(toMap);
-            }
-        });
+       // map.setOnClickListener(new View.OnClickListener() {
+       //     @Override
+       //     public void onClick(View view) {
+       //         Intent toMap = new Intent(homeScreen.this,map.class);
+        //        startActivity(toMap);
+        //    }
+        //});
 
 
     }

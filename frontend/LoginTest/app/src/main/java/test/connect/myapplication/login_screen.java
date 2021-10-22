@@ -18,6 +18,7 @@ import test.connect.myapplication.model.User;
 public class login_screen extends AppCompatActivity {
 Button button_login;
 Button button_signup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,7 @@ Button button_signup;
                 }));
             }
         });
+
 
 
 //        loginButton.setOnClickListener(new View.OnClickListener() {
