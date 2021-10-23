@@ -33,13 +33,22 @@ Button button_signup;
         TextView loginError = findViewById(R.id.activity_login_screen_error);
         loginError.setText("");
 
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GetUserApi().getUserByUsername(userLoginInput.getText().toString()).enqueue(new SlimCallback<User>(user ->{
                     if(userLoginInput.getText().toString().equals(user.getUsername())) {
                         if (userPassInput.getText().toString().equals(user.getPassword())) {
+                            //Intent intent = new Intent(login_screen.this, UserInfo.class);
+                            //intent.putExtra("username", user.getUsername());
+                            //intent.putExtra("email", user.getEmail());
+                            //intent.putExtra("password", user.getPassword());
+                            //intent.putExtra("userId", user.getId());
+
+
                             Intent i = new Intent(login_screen.this, homeScreen.class);
+                            i.putExtra("username", user.getUsername());
                             startActivity(i);
                         }
                     }
@@ -51,19 +60,19 @@ Button button_signup;
                 }));
 
 
-                GetUserApi().getUserByEmail(userLoginInput.getText().toString()).enqueue(new SlimCallback<User>(user -> {
-                    if(userLoginInput.getText().toString().equals(user.getEmail())) {
-                        if (userPassInput.getText().toString().equals(user.getPassword())) {
-                            Intent i = new Intent(login_screen.this, homeScreen.class);
-                            startActivity(i);
-                        }
-                    }
-                    loginError.setText("Invalid Username or Password. Please Try Again.");
-                    userLoginInput.setText("");
-                    userPassInput.setText("");
-
-
-                }));
+//                GetUserApi().getUserByEmail(userLoginInput.getText().toString()).enqueue(new SlimCallback<User>(user -> {
+//                    if(userLoginInput.getText().toString().equals(user.getEmail())) {
+//                        if (userPassInput.getText().toString().equals(user.getPassword())) {
+//                            Intent i = new Intent(login_screen.this, homeScreen.class);
+//                            startActivity(i);
+//                        }
+//                    }
+//                    loginError.setText("Invalid Username or Password. Please Try Again.");
+//                    userLoginInput.setText("");
+//                    userPassInput.setText("");
+//
+//
+//                }));
             }
         });
 
