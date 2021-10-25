@@ -13,7 +13,8 @@ public class homeScreen extends AppCompatActivity {
 Button btnBack;
 Button btnUserInfo;
 TextView testingText;
-
+Button map;
+Button weather;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,24 @@ TextView testingText;
                 Intent userInfo = new Intent(homeScreen.this,UserInfo.class);
                 userInfo.putExtra("username", str);
                 startActivity(userInfo);
+            }
+        });
+
+        map = (Button)findViewById(R.id.btnToMap);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toMap = new Intent(homeScreen.this, Map.class);
+                startActivity(toMap);
+            }
+        });
+
+        weather = (Button)findViewById(R.id.btnToWeather);
+        weather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toWeather = new Intent(homeScreen.this, Weather.class);
+                startActivity(toWeather);
             }
         });
 

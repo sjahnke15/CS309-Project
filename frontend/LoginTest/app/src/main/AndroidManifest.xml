@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="test.connect.myapplication" >
+    package="test.connect.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,7 +11,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".TrailList"
+            android:exported="true" />
+        <activity
+            android:name=".Wildlife"
+            android:exported="true" />
+        <activity
+            android:name=".TrailInfo"
+            android:exported="true" />
+        <activity
+            android:name=".ReviewRating"
+            android:exported="true" />
+        <activity
+            android:name=".TrailHistory"
+            android:exported="true" />
+        <activity
+            android:name=".Weather"
+            android:exported="true" />
+        <activity
+            android:name=".Map"
+            android:exported="true" />
         <activity
             android:name=".UserInfo"
             android:exported="true" />
@@ -26,7 +47,7 @@
             android:exported="true" />
         <activity
             android:name=".login_screen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
