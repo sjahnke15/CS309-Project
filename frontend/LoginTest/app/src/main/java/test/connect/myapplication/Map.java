@@ -10,6 +10,8 @@ import android.widget.Button;
 public class Map extends AppCompatActivity {
 Button toHome;
 Button toWildlife;
+Button toTrailList;
+Button toTrailInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,24 @@ Button toWildlife;
             public void onClick(View view) {
                 Intent wildlife = new Intent(Map.this, Wildlife.class);
                 startActivity(wildlife);
+            }
+        });
+
+        toTrailList = (Button)findViewById(R.id.btnToTrailList);
+        toTrailList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toTrailList = new Intent(Map.this, TrailList.class);
+                startActivity(toTrailList);
+            }
+        });
+
+        toTrailInfo = (Button)findViewById(R.id.btnToTrailInfo);
+        toTrailInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toTrailInfo = new Intent(Map.this, TrailInfo.class);
+                startActivity(toTrailInfo);
             }
         });
     }
