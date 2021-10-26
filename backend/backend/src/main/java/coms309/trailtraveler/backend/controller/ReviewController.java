@@ -34,13 +34,11 @@ public class ReviewController {
 		r.setText(text);
 		
 		List<Trail> trails = trailRepository.findAll();
-		Trail t;
 		
 		for(int i = 0; i < trails.size(); i++) {
 			if(trails.get(i).getId() == trailID) {
-				t = trails.get(i);
-				r.setTrail(t);
-				t.addReview(r);
+				trails.get(i).addReview(r);
+				this.trailRepository.save(trails.get(i));
 				return r;
 			}
 		}
