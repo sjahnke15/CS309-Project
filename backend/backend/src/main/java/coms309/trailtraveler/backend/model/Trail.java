@@ -1,12 +1,10 @@
 package coms309.trailtraveler.backend.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,11 +19,11 @@ public class Trail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "trail_id")
-	private int id;
+	private int trailID;
 	
-	@OneToMany(mappedBy = "trail", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Review> reviews  = new HashSet<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "trail_fk", referencedColumnName = "trailID")
+	List<Review> reviews  = new ArrayList<>();
 	
 	private String name;
 	private int difficulty;
@@ -34,11 +32,11 @@ public class Trail {
 	public Trail() {}
 	
 	public int getId() {
-		return id;
+		return trailID;
 	}
 	
 	public void setId(int id) {
-		this.id = id;
+		this.trailID = id;
 	}
 	
 	public String getName() {
@@ -57,7 +55,7 @@ public class Trail {
 		this.difficulty = difficulty;
 	}
 
-	public Set<Review> getReviews() {
+	public List<Review> getReviews() {
 		return reviews;
 	}
 	
