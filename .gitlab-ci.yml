@@ -16,7 +16,7 @@ maven-test:   #this is a JOB
 
 android-build:
   image: gjandres/android-ci:latest
-  stage: androidbuild
+  stage: android-build
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./frontend/LoginTest/gradlew
