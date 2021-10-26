@@ -22,7 +22,7 @@ android-build: #this is another job
   before_script:
     - cd frontend/LoginTest
     - export GRADLE_USER_HOME=`pwd`/.gradle
-    - chmod +x ./frontend/gradlew
+    - chmod +x ./frontend/LoginTest/gradlew
   script:
     - cd frontend/LoginTest
     - ./gradlew assemble
