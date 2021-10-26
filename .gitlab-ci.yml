@@ -1,7 +1,7 @@
 # Example  .gitlab-ci.yml file
 stages:
   - maven-test
-  - androidtry
+  - android-build
 
 maven-test:   #this is a JOB
   stage: maven-test
@@ -14,14 +14,17 @@ maven-test:   #this is a JOB
     paths:
       - backend/backend/target/*.jar
 
-android-build: #this is another job
-  image: javiersantos/android-ci:latest      # this is a directive to DOCKER
-  stage: androidtry
-  tags:
-   - android_tag         #this is LINK to the docker runner on the remote-server        
+android-build:
+  image: gjandres/android-ci:latest
+  stage: androidbuild
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./frontend/LoginTest/gradlew
+  tags:
+   - android_tag
   script:
     - cd frontend/LoginTest
-    - ./gradlew assemble
+    - ./gradlew build
+  artifacts:
+    paths:
+    - Android_test/app/build/outputs/
