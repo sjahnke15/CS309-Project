@@ -9,6 +9,14 @@ import android.widget.Button;
 
 public class TrailList extends AppCompatActivity {
 Button backToMap;
+
+Button Trail1 = findViewById(R.id.btnTrail1);
+Button Trail2 = findViewById(R.id.btnTrail2);
+Button Trail3 = findViewById(R.id.btnTrail3);
+Button Trail4 = findViewById(R.id.btnTrail4);
+Button Trail5 = findViewById(R.id.btnTrail5);
+Button start = findViewById(R.id.btnStartTrail);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
