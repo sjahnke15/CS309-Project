@@ -11,7 +11,7 @@
         android:layout_width="409dp"
         android:layout_height="156dp"
         android:ems="10"
-        android:gravity="start|top"
+        android:gravity="start|center_horizontal|top|center_vertical"
         android:hint="Tell us about your experience!"
         android:inputType="textMultiLine"
         android:textAlignment="center"
@@ -63,8 +63,8 @@
 
     <Button
         android:id="@+id/btnDifficultyThree"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="420dp"
         android:text="3"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,8 +73,8 @@
 
     <Button
         android:id="@+id/btnRatingThree"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="308dp"
         android:text="3"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,8 +83,8 @@
 
     <Button
         android:id="@+id/btnRatingTwo"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="308dp"
         android:text="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -94,8 +94,8 @@
 
     <Button
         android:id="@+id/btnDifficultyFour"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="420dp"
         android:text="4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -118,8 +118,8 @@
 
     <Button
         android:id="@+id/btnDifficultyTwo"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="420dp"
         android:text="2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -129,8 +129,8 @@
 
     <Button
         android:id="@+id/btnRatingOne"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="308dp"
         android:text="1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -152,8 +152,8 @@
 
     <Button
         android:id="@+id/btnRatingFour"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="308dp"
         android:text="4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -163,8 +163,8 @@
 
     <Button
         android:id="@+id/btnDifficultyOne"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="420dp"
         android:text="1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -174,8 +174,8 @@
 
     <Button
         android:id="@+id/btnDifficultyFive"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="420dp"
         android:text="5"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -199,8 +199,8 @@
 
     <Button
         android:id="@+id/btnRatingFive"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="308dp"
         android:text="5"
         app:layout_constraintBottom_toBottomOf="parent"
