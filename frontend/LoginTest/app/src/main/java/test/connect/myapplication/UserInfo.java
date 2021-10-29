@@ -17,14 +17,19 @@ Button TrailHistory;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
 
-        TextView userText = findViewById(R.id.activity_user_info_text);
+        TextView userText = findViewById(R.id.txtUserName);
         userText.setText("");
         userText.setMovementMethod(new ScrollingMovementMethod());
-
         Intent intent = getIntent();
         String str = intent.getStringExtra("username");
-
         userText.setText(str);
+
+        TextView userEmail = findViewById(R.id.txtEmailUsedByUser);
+        userEmail.setText("");
+        userEmail.setMovementMethod(new ScrollingMovementMethod());
+        Intent email = getIntent();
+        String emailUsed = email.getStringExtra("email");
+        userEmail.setText(emailUsed);
 
         back = (Button)findViewById(R.id.btnBackToHomeFromUserInfo);
         back.setOnClickListener(new View.OnClickListener() {
