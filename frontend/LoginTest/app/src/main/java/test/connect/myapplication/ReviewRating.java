@@ -10,10 +10,25 @@ import android.widget.Button;
 public class ReviewRating extends AppCompatActivity {
 Button back;
 Button toTrailInfo;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_rating);
+
+        Button Difficulty1 = findViewById(R.id.btnDifficultyOne);
+        Button Difficulty2 = findViewById(R.id.btnDifficultyTwo);
+        Button Difficulty3 = findViewById(R.id.btnDifficultyThree);
+        Button Difficulty4 = findViewById(R.id.btnDifficultyFour);
+        Button Difficulty5 = findViewById(R.id.btnDifficultyFive);
+
+        Button Rating1 = findViewById(R.id.btnRatingOne);
+        Button Rating2 = findViewById(R.id.btnRatingTwo);
+        Button Rating3 = findViewById(R.id.btnRatingThree);
+        Button Rating4 = findViewById(R.id.btnRatingFour);
+        Button Rating5 = findViewById(R.id.btnRatingFive);
 
         back = (Button)findViewById(R.id.btnBackToTrailHistory);
         back.setOnClickListener(new View.OnClickListener() {
