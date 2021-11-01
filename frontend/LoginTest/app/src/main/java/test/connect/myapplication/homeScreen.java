@@ -1,20 +1,26 @@
 package test.connect.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import static test.connect.myapplication.api.ApiClientFactory.GetTrailApi;
+
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.List;
+
+import test.connect.myapplication.api.SlimCallback;
+import test.connect.myapplication.model.Trail;
 
 public class homeScreen extends AppCompatActivity {
 Button btnBack;
 Button btnUserInfo;
-TextView testingText;
 Button map;
 Button weather;
+TextView testingText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +31,15 @@ Button weather;
         String str = intent.getStringExtra("username");
 
         testingText = findViewById(R.id.activity_home_screen_testTextView);
-        testingText.setText(str);
+        GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(users->{
+            testingText.setText("");
+            for (int i = 0; i < users.size(); i++){
+                testingText.append(users.get(i).getName());
+            }
+
+        }, "multipleUsersApi"));
+
+
 
         btnBack = (Button)findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
