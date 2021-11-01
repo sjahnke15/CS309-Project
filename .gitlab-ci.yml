@@ -8,6 +8,7 @@ maven-test:   #this is a JOB
   tags:
     - springboot_tag  # this is LINK to the shell runner on the remote-server 
   script:
+    - sudo systemctl start docker
     - cd backend/backend
     - mvn test
   artifacts:
@@ -18,7 +19,6 @@ android-build:
   image: gjandres/android-ci:latest
   stage: android-build
   before_script:
-    - sudo systemctl start docker
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./frontend/LoginTest/gradlew
   tags:
