@@ -5,6 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClientFactory {
 
+
     static Retrofit apiClientSeed = null;
 
     static Retrofit GetApiClientSeed() {
