@@ -20,9 +20,12 @@ Button TrailHistory;
         TextView userText = findViewById(R.id.txtUserName);
         userText.setText("");
         userText.setMovementMethod(new ScrollingMovementMethod());
+
         Intent intent = getIntent();
         String str = intent.getStringExtra("username");
         userText.setText(str);
+
+
 
         TextView userEmail = findViewById(R.id.txtEmailUsedByUser);
         userEmail.setText("");
