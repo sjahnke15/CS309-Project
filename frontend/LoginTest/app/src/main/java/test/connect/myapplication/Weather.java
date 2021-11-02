@@ -65,7 +65,7 @@ EditText textField;
          //   descText.setText("Feels Like" + " " + response.body().getMain().getFeels_like()+ " F");
          //   humidityText.setText("Humidity" + " " + response.body().getMain().getHumidity()+ "%");
         //}
-        Call<weather> call = WeatherApi.getWeatherData(name);
+        Call<weather> call = apiInterface.getWeatherData(name);
 
         call.enqueue(new Callback<weather>() {
             @Override
