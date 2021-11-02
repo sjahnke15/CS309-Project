@@ -60,19 +60,19 @@ Button button_signup;
                 }));
 
 
-//                GetUserApi().getUserByEmail(userLoginInput.getText().toString()).enqueue(new SlimCallback<User>(user -> {
-//                    if(userLoginInput.getText().toString().equals(user.getEmail())) {
-//                        if (userPassInput.getText().toString().equals(user.getPassword())) {
-//                            Intent i = new Intent(login_screen.this, homeScreen.class);
-//                            startActivity(i);
-//                        }
-//                    }
-//                    loginError.setText("Invalid Username or Password. Please Try Again.");
-//                    userLoginInput.setText("");
-//                    userPassInput.setText("");
-//
-//
-//                }));
+                GetUserApi().getUserByEmail(userLoginInput.getText().toString()).enqueue(new SlimCallback<User>(user -> {
+                    if(userLoginInput.getText().toString().equals(user.getEmail())) {
+                        if (userPassInput.getText().toString().equals(user.getPassword())) {
+                            Intent i = new Intent(login_screen.this, homeScreen.class);
+                            startActivity(i);
+                        }
+                    }
+                    loginError.setText("Invalid Username or Password. Please Try Again.");
+                    userLoginInput.setText("");
+                    userPassInput.setText("");
+
+
+                }));
             }
         });
 

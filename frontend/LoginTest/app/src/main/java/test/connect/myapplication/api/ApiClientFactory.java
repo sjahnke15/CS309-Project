@@ -24,6 +24,13 @@ public class ApiClientFactory {
     public static UserApi GetUserApi(){
         return GetApiClientSeed().create(UserApi.class);
     }
-    
+
+    public static ReviewApi GetReviewApi(){
+        return GetApiClientSeed().create(ReviewApi.class);
+    }
+
+    public static TrailApi GetTrailApi(){
+        return GetApiClientSeed().create(TrailApi.class);
+    }
 
 }
