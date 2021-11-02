@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171" />
+        app:layout_constraintVertical_bias="0.08" />
 
     <Button
         android:id="@+id/btnTrailInfo"
@@ -25,10 +25,10 @@
         android:text="Trail Info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintHorizontal_bias="0.838"
         app:layout_constraintStart_toEndOf="@+id/btnBackToTrailHistory"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171" />
+        app:layout_constraintVertical_bias="0.08" />
 
     <TextView
         android:id="@+id/txtLeaveReview"
@@ -38,172 +38,12 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnDifficultyThree"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.546"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
-
-    <TextView
-        android:id="@+id/txtReview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tell us about the trail!"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRatingThree"
-        app:layout_constraintVertical_bias="0.217" />
-
-    <TextView
-        android:id="@+id/txtRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="How would you rate this trail experience?"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btnRatingThree"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDifficultyThree"
-        app:layout_constraintVertical_bias="0.591" />
-
-    <Button
-        android:id="@+id/btnDifficultyThree"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
-
-    <Button
-        android:id="@+id/btnRatingThree"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDifficultyThree"
-        app:layout_constraintVertical_bias="0.191" />
-
-    <Button
-        android:id="@+id/btnRatingOne"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="1"
-        app:layout_constraintBottom_toTopOf="@+id/txtReview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRating"
-        app:layout_constraintVertical_bias="0.256" />
-
-    <Button
-        android:id="@+id/btnRatingFive"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="5"
-        app:layout_constraintBottom_toTopOf="@+id/txtReview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDifficultyFive"
-        app:layout_constraintVertical_bias="0.539" />
-
-    <Button
-        android:id="@+id/btnRatingFour"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="4"
-        app:layout_constraintBottom_toTopOf="@+id/txtReview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.652"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDifficultyFour"
-        app:layout_constraintVertical_bias="0.539" />
-
-    <Button
-        android:id="@+id/btnRatingTwo"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="2"
-        app:layout_constraintBottom_toTopOf="@+id/txtReview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRating"
-        app:layout_constraintVertical_bias="0.256" />
-
-    <Button
-        android:id="@+id/btnDifficultyFour"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="4"
-        app:layout_constraintBottom_toTopOf="@+id/txtRating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.652"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRatingDifficulty"
-        app:layout_constraintVertical_bias="0.369" />
-
-    <Button
-        android:id="@+id/btnDifficultyFive"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="5"
-        app:layout_constraintBottom_toTopOf="@+id/txtRating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.801"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRatingDifficulty"
-        app:layout_constraintVertical_bias="0.369" />
-
-    <Button
-        android:id="@+id/btnDifficultyTwo"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="2"
-        app:layout_constraintBottom_toTopOf="@+id/txtRating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRatingDifficulty"
-        app:layout_constraintVertical_bias="0.369" />
-
-    <Button
-        android:id="@+id/btnDifficultyOne"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="1"
-        app:layout_constraintBottom_toTopOf="@+id/txtRating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRatingDifficulty"
-        app:layout_constraintVertical_bias="0.369" />
-
-    <TextView
-        android:id="@+id/txtRatingDifficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="How would you rate this trail in difficulty?"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btnDifficultyThree"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLeaveReview"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.188" />
 
     <EditText
         android:id="@+id/txtUserReview"
@@ -215,9 +55,71 @@
         android:inputType="textMultiLine"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.817" />
+
+    <TextView
+        android:id="@+id/txtReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tell us about the trail!"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.889" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="241dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Spinner
+        android:id="@+id/trailSpinner"
+        android:layout_width="189dp"
+        android:layout_height="42dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtReview"
-        app:layout_constraintVertical_bias="0.157" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.352"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/trailPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick a Trail From the List"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.273" />
+
+    <TextView
+        android:id="@+id/trailPicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate Your Experience"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
