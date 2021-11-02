@@ -31,10 +31,10 @@ TextView testingText;
         String str = intent.getStringExtra("username");
 
         testingText = findViewById(R.id.activity_home_screen_testTextView);
-        GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(users->{
+        GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(trails->{
             testingText.setText("");
-            for (int i = 0; i < users.size(); i++){
-                testingText.append(users.get(i).getName());
+            for (int i = 0; i < trails.size(); i++){
+                testingText.append(trails.get(i).getName());
             }
 
         }, "multipleUsersApi"));

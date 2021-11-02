@@ -42,7 +42,7 @@ public class ReviewController {
 	}
 	
 	@PostMapping("review/post/{rating}/{text}/{trailID}/{userID}")
-	Review postReviewByPath(@PathVariable int rating, @PathVariable String text, @PathVariable int trailID, @PathVariable int userID) throws Exception {
+	Review postReviewByPath(@PathVariable float rating, @PathVariable String text, @PathVariable int trailID, @PathVariable int userID) throws Exception {
 		Review r = new Review();
 		r.setRating(rating);
 		r.setText(text);
