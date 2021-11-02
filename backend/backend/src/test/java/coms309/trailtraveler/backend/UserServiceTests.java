@@ -20,7 +20,8 @@ import coms309.trailtraveler.backend.repository.UserRepository;
 import coms309.trailtraveler.backend.service.UserService;
 
 @RunWith(SpringRunner.class)
-class BackendApplicationTests {
+class UserServiceTests {
+	
 	@TestConfiguration
 	static class UserContextConfiguration {
 		
