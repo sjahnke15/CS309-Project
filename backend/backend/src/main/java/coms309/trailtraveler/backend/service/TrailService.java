@@ -3,10 +3,12 @@ package coms309.trailtraveler.backend.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import coms309.trailtraveler.backend.model.Trail;
 import coms309.trailtraveler.backend.repository.TrailRepository;
 
+@Service
 public class TrailService {
 
 	@Autowired

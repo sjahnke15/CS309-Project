@@ -3,6 +3,7 @@ package coms309.trailtraveler.backend.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import coms309.trailtraveler.backend.model.Review;
 import coms309.trailtraveler.backend.model.Trail;
@@ -11,6 +12,7 @@ import coms309.trailtraveler.backend.repository.ReviewRepository;
 import coms309.trailtraveler.backend.repository.TrailRepository;
 import coms309.trailtraveler.backend.repository.UserRepository;
 
+@Service
 public class ReviewService {
 	@Autowired
 	ReviewRepository rRepo;
