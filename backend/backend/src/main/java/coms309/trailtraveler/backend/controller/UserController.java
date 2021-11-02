@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import coms309.trailtraveler.backend.model.User;
 import coms309.trailtraveler.backend.repository.UserRepository;
+import coms309.trailtraveler.backend.service.UserService;
 
 @RestController
 public class UserController {
@@ -17,9 +18,12 @@ public class UserController {
 	@Autowired
 	UserRepository UserRepository;
 	
+	@Autowired
+	UserService userService;
+	
 	@GetMapping("user/all")
 	List<User> getAllUsers() {
-		return UserRepository.findAll();
+		return userService.retrieveAllUsers();
 	}
 	
 	@GetMapping("user/username/{username}")
