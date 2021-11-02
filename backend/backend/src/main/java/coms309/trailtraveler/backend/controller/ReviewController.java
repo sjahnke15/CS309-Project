@@ -14,6 +14,7 @@ import coms309.trailtraveler.backend.model.User;
 import coms309.trailtraveler.backend.repository.ReviewRepository;
 import coms309.trailtraveler.backend.repository.TrailRepository;
 import coms309.trailtraveler.backend.repository.UserRepository;
+import coms309.trailtraveler.backend.service.ReviewService;
 
 @RestController
 public class ReviewController {
@@ -24,6 +25,9 @@ public class ReviewController {
 	UserRepository userRepository;
 	@Autowired
 	TrailRepository trailRepository;
+	
+	@Autowired
+	ReviewService rs;
 	
 	@GetMapping("review/all")
 	List<Review> getAllReviews() {
@@ -74,6 +78,15 @@ public class ReviewController {
 			}
 		}
 		throw new Exception("The trail ID does not exist.");
+	}
+	
+	@PostMapping("review/post/{rating}/{text}/{trailName}/{userID}")
+	Review postReviewByTrailName(@PathVariable float rating, @PathVariable String text, @PathVariable String trailName, @PathVariable int userID) {
+		Review r = new Review();
+		r.setRating(rating);
+		r.setText(text);
+		
+		return r;
 	}
 	
 }
