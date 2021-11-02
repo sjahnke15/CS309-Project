@@ -9,56 +9,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import coms309.trailtraveler.backend.model.User;
-import coms309.trailtraveler.backend.repository.UserRepository;
 import coms309.trailtraveler.backend.service.UserService;
 
 @RestController
 public class UserController {
-
-	@Autowired
-	UserRepository UserRepository;
 	
 	@Autowired
-	UserService userService;
+	UserService us;
 	
 	@GetMapping("user/all")
 	List<User> getAllUsers() {
-		return userService.retrieveAllUsers();
+		return us.retrieveAllUsers();
 	}
 	
 	@GetMapping("user/username/{username}")
 	User getUserByUsername(@PathVariable String username) {
-		List<User> users = UserRepository.findAll();
-		User u;
-		for(int i = 0; i < users.size(); i++) {
-			if(users.get(i).getUsername().equals(username)) {
-				u = users.get(i);
-				return u;
-			}
-		}
-		return null;
+		return us.retrieveUserByUsername(username);
 	}
 	
 	@GetMapping("user/email/{email}")
 	User getUserByEmail(@PathVariable String email) {
-		List<User> users = UserRepository.findAll();
-		User u;
-		for(int i = 0; i < users.size(); i++) {
-			if(users.get(i).getEmail().equals(email)) {
-				u = users.get(i);
-				return u;
-			}
-		}
-		return null;
+		return us.retrieveUserByEmail(email);
 	}
 	
-	@PostMapping("user/post/{e}/{n}/{p}")
-	User postUserByPath(@PathVariable String e, @PathVariable String n, @PathVariable String p) {
-		User u = new User();
-		u.setEmail(e);
-		u.setUsername(n);
-		u.setPassword(p);
-		UserRepository.save(u);
-		return u;
+	@PostMapping("user/post/{email}/{username}/{password}")
+	User postUserByPath(@PathVariable String email, @PathVariable String username, @PathVariable String password) {
+		return us.postUser(email, username, password);
 	}
 }

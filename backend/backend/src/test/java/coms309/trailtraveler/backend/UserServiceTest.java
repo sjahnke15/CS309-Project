@@ -20,7 +20,7 @@ import coms309.trailtraveler.backend.repository.UserRepository;
 import coms309.trailtraveler.backend.service.UserService;
 
 @RunWith(SpringRunner.class)
-class UserServiceTest {
+public class UserServiceTest {
 	
 	@TestConfiguration
 	static class UserContextConfiguration {
@@ -63,15 +63,15 @@ class UserServiceTest {
 		u2.setEmail("test2@iastate.edu");
 		u2.setUsername("test2");
 		u2.setPassword("Password2");
-		uRepo.save(u);
+		uRepo.save(u2);
 		
 		User u3 = new User();
 		u3.setEmail("test3@iastate.edu");
 		u3.setUsername("test3");
 		u3.setPassword("Password3");
-		uRepo.save(u);
+		uRepo.save(u3);
 		
-		System.out.println("Email: " + us.retrieveAllUsers().get(0).getEmail());
+		System.out.println("Email: " + us.retrieveAllUsers().get(1).getEmail());
 		
 		assertEquals("sjahnke@iastate.edu", us.retrieveAllUsers().get(0).getEmail());
 		assertEquals("sjahnke", us.retrieveAllUsers().get(0).getUsername());

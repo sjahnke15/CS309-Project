@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import coms309.trailtraveler.backend.model.Trail;
 import coms309.trailtraveler.backend.repository.TrailRepository;
+import coms309.trailtraveler.backend.service.TrailService;
 
 @RestController
 public class TrailController {
@@ -17,17 +18,16 @@ public class TrailController {
 	@Autowired
 	TrailRepository trailRepository;
 	
+	@Autowired
+	TrailService ts;
+	
 	@GetMapping("trail/all")
 	List<Trail> getAllTrails() {
-		return trailRepository.findAll();
+		return ts.retrieveAllTrails();
 	}
 	
-	@PostMapping("trail/post/{n}/{d}")
-	Trail postTrailByPath(@PathVariable String n, @PathVariable int d) {
-		Trail t = new Trail();
-		t.setName(n);
-		t.setDifficulty(d);
-		trailRepository.save(t);
-		return t;
+	@PostMapping("trail/post/{name}/{difficulty}")
+	Trail postTrailByPath(@PathVariable String name, @PathVariable int difficulty) {
+		return ts.postTrail(name, difficulty);
 	}
 }
