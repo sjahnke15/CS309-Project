@@ -43,13 +43,13 @@ TextView userTemp;
 
 
         testingText = findViewById(R.id.activity_home_screen_testTextView);
-        GetReviewApi().getReviewByUserID(userID).enqueue(new SlimCallback<List<Review>>(reviews->{
-            testingText.setText("");
-            for (int i = 0; i < reviews.size(); i++){
-                testingText.append(reviews.get(i).printable());
-            }
-
-        }, "multipleUsersApi"));
+//        GetReviewApi().getReviewByUserID(userID).enqueue(new SlimCallback<List<Review>>(reviews->{
+//            testingText.setText("");
+//            for (int i = 0; i < reviews.size(); i++){
+//                testingText.append(reviews.get(i).printable());
+//            }
+//
+//        }, "multipleUsersApi"));
 
 
 
