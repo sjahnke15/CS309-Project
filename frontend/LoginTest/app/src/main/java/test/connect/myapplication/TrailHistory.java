@@ -15,6 +15,12 @@ Button review;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail_history);
 
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+
         back = (Button)findViewById(R.id.btnBackToUserInfo);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +35,10 @@ Button review;
             @Override
             public void onClick(View view) {
                 Intent leaveReview = new Intent(TrailHistory.this, ReviewRating.class);
+                leaveReview.putExtra("username", username);
+                leaveReview.putExtra("email", email);
+                leaveReview.putExtra("password", password);
+                leaveReview.putExtra("userID", userID);
                 startActivity(leaveReview);
             }
         });
