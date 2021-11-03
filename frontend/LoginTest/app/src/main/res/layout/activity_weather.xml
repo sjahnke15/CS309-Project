@@ -62,7 +62,7 @@
             android:id="@+id/tempText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Text Temp"
+            android:text="Current Temp"
             android:textColor="#fff"
             android:textSize="50sp" />
 
@@ -70,7 +70,7 @@
             android:id="@+id/descText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
+            android:text="Feels Like Temp"
             android:textColor="#fff"
             android:textSize="20sp" />
 
