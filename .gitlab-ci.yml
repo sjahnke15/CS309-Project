@@ -2,6 +2,7 @@
 stages:
   - maven-test
   - android-test
+  - maven-deploy
 
 maven-test:   #this is a JOB
   stage: maven-test
@@ -26,3 +27,17 @@ android-test:
   script:
     - cd frontend/LoginTest
     - ./gradlew test
+
+maven-deploy:
+  stage: maven-deploy
+  tags:
+    - springboot_tag
+  script:
+    - cd backend/backend
+    - mvn package
+    - sudo mv target/*.jar /target/web-demo.jar
+    - sudo systemctl stop system-web-demo
+    - sudo systemctl start system-web-demo
+  artifacts:
+    paths:
+      - backend/backend/target/*.jar
