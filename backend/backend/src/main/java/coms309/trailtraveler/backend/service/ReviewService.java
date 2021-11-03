@@ -60,7 +60,6 @@ public class ReviewService {
 		for(int i = 0; i < userList.size(); i++) {
 			if(userList.get(i).getId() == uid) { 
 				userList.get(i).addReview(review);
-				this.uRepo.save(userList.get(i));
 				found = true;
 			}
 		}
@@ -72,7 +71,7 @@ public class ReviewService {
 		for(int i = 0; i < trailList.size(); i++) {
 			if(trailList.get(i).getId() == tid) {
 				trailList.get(i).addReview(review);
-				this.tRepo.save(trailList.get(i));
+				rRepo.save(review);
 				return review;
 			}
 		}
@@ -91,7 +90,6 @@ public class ReviewService {
 		for(int i = 0; i < userList.size(); i++) {
 			if(userList.get(i).getId() == uid) { 
 				userList.get(i).addReview(review);
-				this.uRepo.save(userList.get(i));
 				found = true;
 			}
 		}
@@ -101,7 +99,7 @@ public class ReviewService {
 			//If we found the trail with name matching the inputed trail name
 			if(trailList.get(i).getName().equals(tName)) {
 				trailList.get(i).addReview(review);
-				tRepo.save(trailList.get(i));
+				rRepo.save(review);
 				return review;
 			}
 		}
