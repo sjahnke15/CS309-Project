@@ -1,7 +1,7 @@
 # Example  .gitlab-ci.yml file
 stages:
   - maven-test
-  - android-build
+  - android-test
 
 maven-test:   #this is a JOB
   stage: maven-test
@@ -15,9 +15,9 @@ maven-test:   #this is a JOB
     paths:
       - backend/backend/target/*.jar
 
-android-build:
+android-test:
   image: gjandres/android-ci:latest
-  stage: android-build
+  stage: android-test
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./frontend/LoginTest/gradlew
@@ -25,7 +25,4 @@ android-build:
    - android_tag
   script:
     - cd frontend/LoginTest
-    - ./gradlew build
-  artifacts:
-    paths:
-    - Android_test/app/build/outputs/
+    - ./gradlew test
