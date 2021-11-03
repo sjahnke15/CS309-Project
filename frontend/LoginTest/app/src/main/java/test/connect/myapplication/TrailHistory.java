@@ -26,6 +26,10 @@ Button review;
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(TrailHistory.this, UserInfo.class);
+                back.putExtra("username", username);
+                back.putExtra("email", email);
+                back.putExtra("password", password);
+                back.putExtra("userID", userID);
                 startActivity(back);
             }
         });

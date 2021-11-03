@@ -58,6 +58,10 @@ public class ReviewRating extends AppCompatActivity {
                 GetReviewApi().PostTrailWithNameByPath(ratingBar.getRating(), reviewText.getText().toString(), name, userID).enqueue(new SlimCallback<Review>(review ->{
                     reviewText.setText("");
                     Intent back = new Intent(ReviewRating.this, TrailHistory.class);
+                    back.putExtra("username", username);
+                    back.putExtra("email", email);
+                    back.putExtra("password", password);
+                    back.putExtra("userID", userID);
                     startActivity(back);
                 }));
             }
@@ -69,6 +73,10 @@ public class ReviewRating extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(ReviewRating.this, TrailHistory.class);
+                back.putExtra("username", username);
+                back.putExtra("email", email);
+                back.putExtra("password", password);
+                back.putExtra("userID", userID);
                 startActivity(back);
             }
         });
@@ -78,6 +86,10 @@ public class ReviewRating extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent trailInfo = new Intent(ReviewRating.this, TrailInfo.class);
+                trailInfo.putExtra("username", username);
+                trailInfo.putExtra("email", email);
+                trailInfo.putExtra("password", password);
+                trailInfo.putExtra("userID", userID);
                 startActivity(trailInfo);
             }
         });

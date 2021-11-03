@@ -58,6 +58,10 @@ TextView userTemp;
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(homeScreen.this,login_screen.class);
+                back.putExtra("username", username);
+                back.putExtra("email", email);
+                back.putExtra("password", password);
+                back.putExtra("userID", userID);
                 startActivity(back);
             }
         });
@@ -80,6 +84,10 @@ TextView userTemp;
             @Override
             public void onClick(View view) {
                 Intent toMap = new Intent(homeScreen.this, Map.class);
+                toMap.putExtra("username", username);
+                toMap.putExtra("email", email);
+                toMap.putExtra("password", password);
+                toMap.putExtra("userID", userID);
                 startActivity(toMap);
             }
         });
@@ -89,6 +97,10 @@ TextView userTemp;
             @Override
             public void onClick(View view) {
                 Intent toWeather = new Intent(homeScreen.this, Weather.class);
+                toWeather.putExtra("username", username);
+                toWeather.putExtra("email", email);
+                toWeather.putExtra("password", password);
+                toWeather.putExtra("userID", userID);
                 startActivity(toWeather);
 
             }

@@ -46,6 +46,7 @@ TextView userReviews;
         userPassword.append(password);
 
         userReviews = findViewById(R.id.txtUserReviews);
+        userReviews.setMovementMethod(new ScrollingMovementMethod());
         GetReviewApi().getReviewByUserID(userID).enqueue(new SlimCallback<List<Review>>(reviews->{
             userReviews.setText("");
             for (int i = 0; i < reviews.size(); i++){
@@ -60,6 +61,10 @@ TextView userReviews;
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(UserInfo.this, homeScreen.class);
+                back.putExtra("username", username);
+                back.putExtra("email", email);
+                back.putExtra("password", password);
+                back.putExtra("userID", userID);
                 startActivity(back);
             }
         });

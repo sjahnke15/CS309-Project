@@ -17,11 +17,21 @@ Button toTrailInfo;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map2);
 
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+
         toHome = (Button)findViewById(R.id.btnBackToHomeFromMap);
         toHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(Map.this, homeScreen.class);
+                back.putExtra("username", username);
+                back.putExtra("email", email);
+                back.putExtra("password", password);
+                back.putExtra("userID", userID);
                 startActivity(back);
             }
         });
@@ -31,6 +41,10 @@ Button toTrailInfo;
             @Override
             public void onClick(View view) {
                 Intent wildlife = new Intent(Map.this, Wildlife.class);
+                wildlife.putExtra("username", username);
+                wildlife.putExtra("email", email);
+                wildlife.putExtra("password", password);
+                wildlife.putExtra("userID", userID);
                 startActivity(wildlife);
             }
         });
@@ -40,6 +54,10 @@ Button toTrailInfo;
             @Override
             public void onClick(View view) {
                 Intent toTrailList = new Intent(Map.this, TrailList.class);
+                toTrailList.putExtra("username", username);
+                toTrailList.putExtra("email", email);
+                toTrailList.putExtra("password", password);
+                toTrailList.putExtra("userID", userID);
                 startActivity(toTrailList);
             }
         });
@@ -49,6 +67,10 @@ Button toTrailInfo;
             @Override
             public void onClick(View view) {
                 Intent toTrailInfo = new Intent(Map.this, TrailInfo.class);
+                toTrailInfo.putExtra("username", username);
+                toTrailInfo.putExtra("email", email);
+                toTrailInfo.putExtra("password", password);
+                toTrailInfo.putExtra("userID", userID);
                 startActivity(toTrailInfo);
             }
         });

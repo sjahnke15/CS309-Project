@@ -38,10 +38,21 @@ EditText textField;
         descText = findViewById(R.id.descText);
         humidityText = findViewById(R.id.humidityText);
         toHome = (Button)findViewById(R.id.btnBackHomeFromWeather);
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+
         toHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(Weather.this, homeScreen.class);
+                back.putExtra("username", username);
+                back.putExtra("email", email);
+                back.putExtra("password", password);
+                back.putExtra("userID", userID);
                 String temp = tempText.getText().toString();
                 back.putExtra("Message_key", temp);
                 startActivity(back);

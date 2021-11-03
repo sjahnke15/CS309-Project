@@ -33,6 +33,12 @@ Button button_signup;
         TextView loginError = findViewById(R.id.activity_login_screen_error);
         loginError.setText("");
 
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +108,10 @@ Button button_signup;
             @Override
             public void onClick(View view) {
                 Intent signup = new Intent(login_screen.this,signUp.class);
+                signup.putExtra("username", username);
+                signup.putExtra("email", email);
+                signup.putExtra("password", password);
+                signup.putExtra("userID", userID);
                 startActivity(signup);
             }
         });
