@@ -34,12 +34,16 @@ EditText textField;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
-
+        tempText = findViewById(R.id.tempText);
+        descText = findViewById(R.id.descText);
+        humidityText = findViewById(R.id.humidityText);
         toHome = (Button)findViewById(R.id.btnBackHomeFromWeather);
         toHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(Weather.this, homeScreen.class);
+                String temp = tempText.getText().toString();
+                back.putExtra("Message_key", temp);
                 startActivity(back);
             }
         });
@@ -61,18 +65,18 @@ EditText textField;
 
         WeatherApi apiInterface = ApiClient.getClient().create(WeatherApi.class);
         //GetWeatherApi().getWeatherData(textField.getText().toString()).enqueue(new SlimCallback<Main>(weather ->{
-         //   tempText.setText("Temp" + " " + weather.getTemp() + " F");
-         //   descText.setText("Feels Like" + " " + response.body().getMain().getFeels_like()+ " F");
-         //   humidityText.setText("Humidity" + " " + response.body().getMain().getHumidity()+ "%");
+            //tempText.setText("Temp" + " " + weather.getTemp() + " F");
+            //descText.setText("Feels Like" + " " + response.body().getMain().getFeels_like()+ " F");
+            //humidityText.setText("Humidity" + " " + response.body().getMain().getHumidity()+ "%");
         //}
         Call<weather> call = apiInterface.getWeatherData(name);
 
         call.enqueue(new Callback<weather>() {
             @Override
             public void onResponse(Call<weather> call, Response<weather> response) {
-                tempText = findViewById(R.id.tempText);
-                descText = findViewById(R.id.descText);
-                humidityText = findViewById(R.id.humidityText);
+                //tempText = findViewById(R.id.tempText);
+                //descText = findViewById(R.id.descText);
+                //humidityText = findViewById(R.id.humidityText);
                 try {
                     tempText.setText("Temp" + " " + response.body().getMain().getTemp() + " F");
                     descText.setText("Feels Like" + " " + response.body().getMain().getFeels_like()+ " F");

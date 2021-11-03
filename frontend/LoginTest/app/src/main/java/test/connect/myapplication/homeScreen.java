@@ -23,11 +23,16 @@ Button btnUserInfo;
 Button map;
 Button weather;
 TextView testingText;
+TextView userTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        String temp = getIntent().getStringExtra("Message_key");
+        userTemp = (TextView)findViewById(R.id.txtUserTemp);
+        userTemp.setText(temp);
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
@@ -85,6 +90,7 @@ TextView testingText;
             public void onClick(View view) {
                 Intent toWeather = new Intent(homeScreen.this, Weather.class);
                 startActivity(toWeather);
+
             }
         });
 

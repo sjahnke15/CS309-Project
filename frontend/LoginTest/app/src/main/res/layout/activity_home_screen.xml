@@ -5,7 +5,8 @@
     android:id="@+id/activity_home_screen_TextView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homeScreen">
+    tools:context=".homeScreen"
+    android:background = "@drawable/homescreenbackground">
 
     <TextView
         android:id="@+id/textView_home"
@@ -40,7 +41,7 @@
         android:text="User Info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintHorizontal_bias="0.946"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
@@ -50,12 +51,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
+        app:layout_constraintVertical_bias="0.676" />
 
     <Button
         android:id="@+id/btnToMap"
@@ -76,9 +78,40 @@
         android:text="Weather"
         app:layout_constraintBottom_toTopOf="@+id/activity_home_screen_testTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_home"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.562" />
+
+    <TextView
+        android:id="@+id/txtCurrentWeather"
+        android:layout_width="395dp"
+        android:layout_height="41dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Current Weather for desired location"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtUserTemp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_home"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtUserTemp"
+        android:layout_width="390dp"
+        android:layout_height="83dp"
+        android:text="Current Temperature"
+        android:textAlignment="center"
+        android:textColor="#E9F19B"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnToWeather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_home"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
