@@ -37,7 +37,7 @@ public class ReviewController {
 		return rs.postReview(rating, text, trailID, userID);
 	}
 	
-	@PostMapping("review/post/{rating}/{text}/{trailName}/{userID}")
+	@PostMapping("review/postbyname/{rating}/{text}/{trailName}/{userID}")
 	Review postReviewByTrailName(@PathVariable float rating, @PathVariable String text, @PathVariable String trailName, @PathVariable int userID) throws Exception {
 		return rs.postReviewWithTrailname(rating, text, trailName, userID);
 	}
