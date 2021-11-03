@@ -24,6 +24,6 @@ public interface ReviewApi {
     @POST("review/post/{rating}/{text}/{trailID}/{userID}")
     Call<Review> PostTrailByPath(@Path("rating") float rating, @Path("text") String text, @Path("trailID") int trailID, @Path("userID") int userID);
 
-    @POST("review/post/{rating}/{text}/{trailName}/{userID}")
+    @POST("review/postbyname/{rating}/{text}/{trailName}/{userID}")
     Call<Review> PostTrailWithNameByPath(@Path("rating") float rating, @Path("text") String text, @Path("trailName") String name, @Path("userID") int userID);
 }
