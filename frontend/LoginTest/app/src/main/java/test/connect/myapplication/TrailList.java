@@ -23,11 +23,21 @@ Button backToMap;
         Button Trail5 = findViewById(R.id.btnTrail5);
         Button start = findViewById(R.id.btnStartTrail);
 
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+
         backToMap = (Button)findViewById(R.id.btnBackToMap);
         backToMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(TrailList.this, Map.class);
+                back.putExtra("username", username);
+                back.putExtra("email", email);
+                back.putExtra("password", password);
+                back.putExtra("userID", userID);
                 startActivity(back);
             }
         });
