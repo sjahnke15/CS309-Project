@@ -4,7 +4,7 @@ public class Review {
 
     private int reviewID;
     private String text;
-    private int rating;
+    private float rating;
 
     public Review() {
     }
@@ -25,11 +25,11 @@ public class Review {
         this.text = text;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

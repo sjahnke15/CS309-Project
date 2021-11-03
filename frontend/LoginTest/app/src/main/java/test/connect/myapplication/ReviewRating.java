@@ -1,6 +1,6 @@
 package test.connect.myapplication;
-
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ Button back;
 Button toTrailInfo;
 RatingBar ratingBar;
 TextView leaveReview;
+Button submit;
 
 
     @Override
@@ -26,6 +27,7 @@ TextView leaveReview;
 
         ratingBar = findViewById(R.id.ratingBar);
         leaveReview = findViewById(R.id.txtLeaveReview);
+        submit = findViewById(R.id.reviewPostButton);
         
 
         Spinner spinner = findViewById(R.id.trailSpinner);
@@ -33,7 +35,12 @@ TextView leaveReview;
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //GetReviewApi().
+            }
+        });
 
 
         back = (Button)findViewById(R.id.btnBackToTrailHistory);
