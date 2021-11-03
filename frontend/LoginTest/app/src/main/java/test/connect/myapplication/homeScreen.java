@@ -90,6 +90,7 @@ TextView userTemp;
             public void onClick(View view) {
                 Intent toWeather = new Intent(homeScreen.this, Weather.class);
                 startActivity(toWeather);
+
             }
         });
 
