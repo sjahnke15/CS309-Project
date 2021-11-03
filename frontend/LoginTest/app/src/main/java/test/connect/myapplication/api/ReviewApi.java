@@ -18,6 +18,9 @@ public interface ReviewApi {
     @GET("trail/getReviews/{trailID}")
     Call<List<Review>> getReviewByTrailID(@Path("trailID") String trailID);
 
+    @GET("trail/getReviewsByUserID/{userID}")
+    Call<List<Review>> getReviewByUserID(@Path("userID") int userID);
+
     @POST("review/post/{rating}/{text}/{trailID}/{userID}")
     Call<Review> PostTrailByPath(@Path("rating") float rating, @Path("text") String text, @Path("trailID") int trailID, @Path("userID") int userID);
 

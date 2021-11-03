@@ -1,22 +1,28 @@
 package test.connect.myapplication;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
+import static test.connect.myapplication.api.ApiClientFactory.GetReviewApi;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import test.connect.myapplication.api.SlimCallback;
+import test.connect.myapplication.model.Review;
+
 public class ReviewRating extends AppCompatActivity {
-Button back;
-Button toTrailInfo;
-RatingBar ratingBar;
-TextView leaveReview;
-Button submit;
+    Button back;
+    Button toTrailInfo;
+    RatingBar ratingBar;
+    TextView leaveReview;
+    Button submit;
+    EditText reviewText;
 
 
     @Override
@@ -24,21 +30,36 @@ Button submit;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_rating);
 
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+
+
+
 
         ratingBar = findViewById(R.id.ratingBar);
         leaveReview = findViewById(R.id.txtLeaveReview);
         submit = findViewById(R.id.reviewPostButton);
-        
+        reviewText = findViewById(R.id.txtUserReview);
+
 
         Spinner spinner = findViewById(R.id.trailSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Trails, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //GetReviewApi().
+                String name = spinner.getSelectedItem().toString();
+                GetReviewApi().PostTrailWithNameByPath(ratingBar.getRating(), reviewText.getText().toString(), name, userID).enqueue(new SlimCallback<Review>(review ->{
+                    reviewText.setText("");
+                    Intent back = new Intent(ReviewRating.this, TrailHistory.class);
+                    startActivity(back);
+                }));
             }
         });
 

@@ -49,6 +49,9 @@ Button button_signup;
 
                             Intent i = new Intent(login_screen.this, homeScreen.class);
                             i.putExtra("username", user.getUsername());
+                            i.putExtra("email", user.getEmail());
+                            i.putExtra("password", user.getPassword());
+                            i.putExtra("userID", user.getId());
                             startActivity(i);
                         }
                     }

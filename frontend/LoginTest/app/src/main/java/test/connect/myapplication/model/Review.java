@@ -35,8 +35,7 @@ public class Review {
 
 
     public String printable(){
-        return "\nReviewID: " + this.reviewID
-                + "\nText: " + this.text
-                + "\nRating: "+ this.rating;
+        return "\nText: " + this.text
+                + "\nRating: "+ this.rating + "\n";
     }
 }

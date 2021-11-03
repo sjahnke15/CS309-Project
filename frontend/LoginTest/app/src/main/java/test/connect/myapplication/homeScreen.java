@@ -2,6 +2,7 @@ package test.connect.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import static test.connect.myapplication.api.ApiClientFactory.GetTrailApi;
+import static test.connect.myapplication.api.ApiClientFactory.GetReviewApi;
 
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import test.connect.myapplication.api.SlimCallback;
+import test.connect.myapplication.model.Review;
 import test.connect.myapplication.model.Trail;
 
 public class homeScreen extends AppCompatActivity {
@@ -28,13 +30,18 @@ TextView testingText;
         setContentView(R.layout.activity_home_screen);
 
         Intent intent = getIntent();
-        String str = intent.getStringExtra("username");
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+
+
 
         testingText = findViewById(R.id.activity_home_screen_testTextView);
-        GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(trails->{
+        GetReviewApi().getReviewByUserID(userID).enqueue(new SlimCallback<List<Review>>(reviews->{
             testingText.setText("");
-            for (int i = 0; i < trails.size(); i++){
-                testingText.append(trails.get(i).getName());
+            for (int i = 0; i < reviews.size(); i++){
+                testingText.append(reviews.get(i).printable());
             }
 
         }, "multipleUsersApi"));
@@ -55,7 +62,10 @@ TextView testingText;
             @Override
             public void onClick(View view) {
                 Intent userInfo = new Intent(homeScreen.this,UserInfo.class);
-                userInfo.putExtra("username", str);
+                userInfo.putExtra("username", username);
+                userInfo.putExtra("email", email);
+                userInfo.putExtra("password", password);
+                userInfo.putExtra("userID", userID);
                 startActivity(userInfo);
             }
         });

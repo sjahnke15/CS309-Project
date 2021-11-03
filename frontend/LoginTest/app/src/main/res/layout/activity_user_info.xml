@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.109" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User ID: "
@@ -60,7 +60,7 @@
         app:layout_constraintBottom_toTopOf="@+id/txtEmailUsedByUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtID" />
 
     <TextView
         android:id="@+id/txtEmailUsedByUser"
@@ -71,17 +71,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/txtID"
         app:layout_constraintVertical_bias="0.073" />
 
     <TextView
-        android:id="@+id/txtUserLevel"
+        android:id="@+id/txtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Level:"
+        android:text="User Password:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmailUsedByUser"
         app:layout_constraintVertical_bias="0.017" />
+
+    <TextView
+        android:id="@+id/txtReviewBanner"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:text="User Reviews"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39" />
+
+    <TextView
+        android:id="@+id/txtUserReviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
