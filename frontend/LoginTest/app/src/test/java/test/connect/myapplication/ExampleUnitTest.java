@@ -33,7 +33,7 @@ public class ExampleUnitTest {
         User user = new User();
         user.setUsername("Eijah Hanson");
         user.setPassword("Password");
-        assertEquals(true, logintest.canLogIn(user, password));
+        assertEquals(false, logintest.canLogIn(user, password));
 
     }
 }
