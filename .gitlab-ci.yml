@@ -13,7 +13,7 @@ maven-build:   #this is a JOB
   script:
     - sudo systemctl start docker
     - cd backend/backend
-    - mvn package
+    - mvn package -B
 
 android-build:
   image: gjandres/android-ci:latest
