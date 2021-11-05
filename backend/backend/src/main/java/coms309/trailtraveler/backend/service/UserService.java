@@ -50,4 +50,19 @@ public class UserService {
 		uRepo.save(user);
 		return user;
 	}
+	
+	public int newPassword(String i, String p, String nP) {
+		User user = retrieveUserByUsername(i);
+		if (user.equals(null)) {
+			user = retrieveUserByEmail(i);
+			if (user.equals(null)) {
+				return 2;
+			}
+		}
+		if (!user.getPassword().equals(p)) {
+			return 1;
+		}
+		user.setPassword(nP);
+		return 0;
+	}
 }
