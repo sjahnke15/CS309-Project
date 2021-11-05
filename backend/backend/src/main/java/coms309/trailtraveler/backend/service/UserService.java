@@ -15,6 +15,9 @@ public class UserService {
 	UserRepository uRepo;
 	
 	public List<User> retrieveAllUsers() {
+		if(uRepo.findAll().size() == 0) { //There are no users
+			return null;
+		}
 		return uRepo.findAll();
 	}
 	
