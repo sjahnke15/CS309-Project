@@ -53,13 +53,13 @@ public class UserService {
 	
 	public int newPassword(String i, String p, String nP) {
 		User user = retrieveUserByUsername(i);
-		if (user == null) {
+		if (user.equals(null)) {
 			user = retrieveUserByEmail(i);
-			if (user == null) {
+			if (user.equals(null)) {
 				return 2;
 			}
 		}
-		if (p != user.getPassword()) {
+		if (!user.getPassword().equals(p)) {
 			return 1;
 		}
 		user.setPassword(nP);
