@@ -51,15 +51,18 @@ public class UserService {
 		return user;
 	}
 	
-	public boolean newPassword(String i, String nP) {
+	public int newPassword(String i, String p, String nP) {
 		User user = retrieveUserByUsername(i);
 		if (user == null) {
 			user = retrieveUserByEmail(i);
 			if (user == null) {
-				return false;
+				return 2;
 			}
 		}
+		if (p != user.getPassword()) {
+			return 1;
+		}
 		user.setPassword(nP);
-		return true;
+		return 0;
 	}
 }
