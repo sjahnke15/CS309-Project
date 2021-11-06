@@ -22,6 +22,9 @@ public class ReviewService {
 	UserRepository uRepo;
 	
 	public List<Review> retrieveAllReviews() {
+		if(rRepo.findAll().size() == 0) {
+			return null;
+		}
 		return rRepo.findAll();
 	}
 	

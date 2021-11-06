@@ -39,4 +39,12 @@ public class Review {
 	public void setRating(float rating) {
 		this.rating = rating;
 	}
+	
+	public int getId() {
+		return reviewID;
+	}
+	
+	public void setId(int id) {
+		reviewID = id;
+	}
 }
