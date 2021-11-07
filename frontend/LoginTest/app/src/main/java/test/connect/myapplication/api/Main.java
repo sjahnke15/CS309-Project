@@ -7,7 +7,10 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Main {
 
-
+    /**
+     * Daniel
+     * @SerializedName is a way for the exact name as stored in the API to be found and for the values related to it to be found as well.
+     */
     @SerializedName("temp")
     String temp;
 
