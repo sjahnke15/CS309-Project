@@ -1,9 +1,7 @@
 package test.connect.myapplication.model;
 
 /**
- *@author Elijah Hanson
- *
- * Class containing a helper method for user login
+ * Elijah Hanson - Class containing a helper method for user login
  */
 public class LoginTest{
 

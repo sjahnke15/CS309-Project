@@ -3,9 +3,7 @@ package test.connect.myapplication.model;
 import java.util.List;
 
 /**
- *@author Elijah Hanson
- *
- * Class for creating an object based on JSON object we recieve from the backend
+ * Elijah Hanson - Class for creating an object based on JSON object we recieve from the backend
  */
 public class Trail {
 

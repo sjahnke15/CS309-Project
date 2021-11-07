@@ -9,9 +9,7 @@ import retrofit2.http.Path;
 import test.connect.myapplication.model.Trail;
 
 /**
- * @author Elijah Hanson
- *
- * Class for managing GET and POST requests related to the Trail table
+ * Elijah Hanson - Class for managing GET and POST requests related to the Trail table
  */
 public interface TrailApi {
     /**

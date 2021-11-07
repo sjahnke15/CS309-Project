@@ -1,8 +1,6 @@
 package test.connect.myapplication.model;
 /**
- *@author Elijah Hanson
- *
- * Class for creating an object based on JSON object we recieve from the backend
+ * Elijah Hanson - Class for creating an object based on JSON object we recieve from the backend
  */
 public class Review {
 

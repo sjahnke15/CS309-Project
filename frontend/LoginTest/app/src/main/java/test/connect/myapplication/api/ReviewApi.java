@@ -10,9 +10,7 @@ import test.connect.myapplication.model.Review;
 
 
 /**
- * @author Elijah Hanson
- *
- * Class for managing GET and POST requests related to the Review table
+ * Elijah Hanson - Class for managing GET and POST requests related to the Review table
  */
 public interface ReviewApi {
 

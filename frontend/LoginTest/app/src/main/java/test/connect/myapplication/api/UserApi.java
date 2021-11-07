@@ -10,9 +10,7 @@ import retrofit2.http.Query;
 import test.connect.myapplication.model.User;
 
 /**
- * @author Elijah Hanson
- *
- * Class for managing GET and POST requests related to the User table
+ * Elijah Hanson - Class for managing GET and POST requests related to the User table
  */
 public interface UserApi {
 
