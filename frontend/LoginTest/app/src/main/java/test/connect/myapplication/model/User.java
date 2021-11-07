@@ -1,5 +1,9 @@
 package test.connect.myapplication.model;
 
+/**
+ * Daniel
+ * The user class consists of getter and setter methods to get all the information related to the user such as email, username, password and user ID
+ */
 public class User {
     private String email;
     private String username;
@@ -41,6 +45,11 @@ public class User {
         this.password = password;
     }
 
+    /**
+     * Daniel
+     * printable() will display all the users information that was taken from above getter and setter methods.
+     * @return returns all information taken in
+     */
     public String printable(){
         return "\nUsername: " + this.username
                 + "\nEmail: " + this.email

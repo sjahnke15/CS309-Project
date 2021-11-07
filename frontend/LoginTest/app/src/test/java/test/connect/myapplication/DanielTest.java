@@ -12,7 +12,6 @@ public class DanielTest {
     @Test
     public void loginTestSuccess() {
         LoginTest logintest = new LoginTest();
-
         String password = "Password";
         User user = new User();
         user.setUsername("Daniel");
@@ -23,8 +22,7 @@ public class DanielTest {
     @Test
     public void loginTestFail() {
         LoginTest logintest = new LoginTest();
-
-        String password = "ThisWorks";
+        String password = "Incorrect";
         User user = new User();
         user.setUsername("Chrisman");
         user.setPassword("Password");
