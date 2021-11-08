@@ -14,10 +14,24 @@ public class TrailService {
 	@Autowired
 	TrailRepository tRepo;
 	
+	/*
+	 * Retrieves a list of all trails from the trail repository
+	 * @return
+	 * A list of trials
+	 */
 	public List<Trail> retrieveAllTrails() {
 		return tRepo.findAll();
 	}
 
+	/*
+	 * Posts a trail with the given trail information to the trail repository
+	 * @param
+	 * A trail name
+	 * @param
+	 * A trail difficulty
+	 * @return
+	 * The new trail
+	 */
 	public Trail postTrail(String n, int d) {
 		Trail trail = new Trail();
 		trail.setName(n);
@@ -26,6 +40,13 @@ public class TrailService {
 		return trail;
 	}
 
+	/*
+	 * Retrieves a trail with a trail ID matching the input
+	 * @param
+	 * A trail ID
+	 * @return
+	 * A trail
+	 */
 	public Trail retrieveTrailByID(int id) {
 		List<Trail> trailList = tRepo.findAll();
 		Trail trail;
@@ -38,6 +59,13 @@ public class TrailService {
 		return null;
 	}
 	
+	/*
+	 * Retrieves a trail with a trail name matching the input
+	 * @param
+	 * A trail name
+	 * @return
+	 * A trail
+	 */
 	public Trail retrieveTrailByName(String name) {
 		List<Trail> trailList = tRepo.findAll();
 		Trail trail;
@@ -50,6 +78,13 @@ public class TrailService {
 		return null;
 	}
 	
+	/*
+	 * Retrieves a list of trails with a trail difficulty matching the input
+	 * @param
+	 * A difficulty
+	 * @return
+	 * A list of trails
+	 */
 	public List<Trail> retrieveTrailListByDifficulty(int dif) {
 		List<Trail> trailList = tRepo.findAll();
 		for (int i = 0; i < trailList.size(); i++) {
