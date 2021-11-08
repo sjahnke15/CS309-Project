@@ -21,11 +21,11 @@ public class ReviewService {
 	@Autowired
 	UserRepository uRepo;
 	
-	/*
+	/**
 	 * Retrieves a list of all reviews from the review repository
 	 * @return
 	 * A list of reviews
-	 */
+	 **/
 	public List<Review> retrieveAllReviews() {
 		if(rRepo.findAll().size() == 0) {
 			return null;
@@ -33,13 +33,13 @@ public class ReviewService {
 		return rRepo.findAll();
 	}
 	
-	/*
+	/**
 	 * Retrieves a list of reviews with a trail ID matching the input
 	 * @param
 	 * A trail ID
 	 * @return
 	 * A list of reviews
-	 */
+	 **/
 	public List<Review> retrieveReviewsByTrailID(int tid) {
 		List<Trail> trailList = tRepo.findAll();
 		for(int i = 0; i < trailList.size(); i++) {
@@ -50,13 +50,13 @@ public class ReviewService {
 		return null;
 	}
 	
-	/*
+	/**
 	 * Retrieves a list of reviews with a user ID matching the input
 	 * @param
 	 * A user ID
 	 * @return
 	 * A list of reviews
-	 */
+	 **/
 	public List<Review> retrieveReviewsByUserID(int uid) {
 		List<User> userList = uRepo.findAll();
 		for(int i = 0; i < userList.size(); i++) {
@@ -67,7 +67,7 @@ public class ReviewService {
 		return null;
 	}
 	
-	/*
+	/**
 	 * Posts a review with the given review information to the review repository
 	 * @param
 	 * A trail rating
@@ -83,7 +83,7 @@ public class ReviewService {
 	 * An exception if the user does not exist
 	 * @throws
 	 * An exception if the trail does not exist
-	 */
+	 **/
 	public Review postReview(float r, String t, int tid, int uid) throws Exception {
 		Review review = new Review();
 		review.setRating(r);
@@ -117,7 +117,7 @@ public class ReviewService {
 		throw new Exception("The trail ID does not exist.");
 	}
 
-	/*
+	/**
 	 * Posts a review with the given review information
 	 * @param
 	 * A trail rating
@@ -133,7 +133,7 @@ public class ReviewService {
 	 * An exception if the user does not exist
 	 * @throws
 	 * An exception if the trail does not exist
-	 */
+	 **/
 	public Review postReviewWithTrailname(float r, String t, String tName, int uid) throws Exception{
 		Review review = new Review();
 		review.setRating(r);
