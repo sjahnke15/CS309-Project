@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -18,10 +19,13 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -39,6 +43,7 @@ Button toTrailInfo;
     GoogleMap mGoogleMap;
     FloatingActionButton fab;
     private FusedLocationProviderClient mlocationClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +121,21 @@ Button toTrailInfo;
 
     }
 
+    @SuppressLint("MissingPermission")
     private void getCurrentLoc() {
+        mlocationClient.getLastLocation().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                Location location = task.getResult();
+                gotoLocation(location.getLatitude(), location.getLongitude());
+            }
+        })
+    }
+
+    private void gotoLocation(double latitude, double longitude) {
+        LatLng LatLong = new LatLng(latitude, longitude);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(LatLong, 18);
+        mGoogleMap.moveCamera(cameraUpdate);
+        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
 
     private void initMap() {
