@@ -1,9 +1,11 @@
 package test.connect.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,9 +15,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -23,13 +30,15 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
-public class Map extends AppCompatActivity implements OnMapReadyCallback {
+public class Map extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 Button toHome;
 Button toWildlife;
 Button toTrailList;
 Button toTrailInfo;
     boolean isPermissionGranted;
-    MapView mapview;
+    GoogleMap mGoogleMap;
+    FloatingActionButton fab;
+    private FusedLocationProviderClient mlocationClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,14 +101,31 @@ Button toTrailInfo;
                 startActivity(toTrailInfo);
             }
         });
-        mapview = findViewById(R.id.map_view);
+        fab = findViewById(R.id.fab);
+
         checkMyPermission();
-        if (isPermissionGranted){
-            mapview.getMapAsync(this);
-            mapview.onCreate(savedInstanceState);
-        }
+
+        initMap();
+        mlocationClient = new FusedLocationProviderClient(this);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getCurrentLoc();
+            }
+        });
 
     }
+
+    private void getCurrentLoc() {
+    }
+
+    private void initMap() {
+        if (isPermissionGranted){
+            SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.frag);
+            supportMapFragment.getMapAsync(this);
+        }
+    }
+
     private void checkMyPermission(){
         Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener(){
 
@@ -125,42 +151,26 @@ Button toTrailInfo;
         }).check();
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        mGoogleMap = googleMap;
+        //mGoogleMap.setMyLocationEnabled(true);
     }
+
+
     @Override
-    public void onStart(){
-        super.onStart();
-        mapview.onStart();
+    public void onConnected(@Nullable Bundle bundle) {
+
     }
+
     @Override
-    public void onResume(){
-        super.onResume();
-        mapview.onResume();
+    public void onConnectionSuspended(int i) {
+
     }
+
     @Override
-    public void onPause(){
-        super.onPause();
-        mapview.onPause();
-    }
-    @Override
-    public void onStop(){
-        super.onStop();
-        mapview.onStop();
-    }
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        mapview.onDestroy();
-    }
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState){
-        super.onSaveInstanceState(outState, outPersistentState);
-        mapview.onSaveInstanceState(outState);
-    }
-    @Override
-    public void onLowMemory(){
-        super.onLowMemory();
-        mapview.onLowMemory();
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }
