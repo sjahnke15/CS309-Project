@@ -2,12 +2,14 @@ package test.connect.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -43,6 +45,7 @@ Button toTrailInfo;
     GoogleMap mGoogleMap;
     FloatingActionButton fab;
     private FusedLocationProviderClient mlocationClient;
+    private int GPS_REQUEST_CODE = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,9 +143,33 @@ Button toTrailInfo;
 
     private void initMap() {
         if (isPermissionGranted){
-            SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.frag);
-            supportMapFragment.getMapAsync(this);
+            if(isGPSenable()){
+                SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.frag);
+                supportMapFragment.getMapAsync(this);
+            }
         }
+    }
+
+    private boolean isGPSenable(){
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        boolean enable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if(enable){
+            return true;
+        }
+        else{
+            AlertDialog alertDialog = new AlertDialog.Builder(this)
+                    .setTitle("GPS Permission")
+                    .setMessage("GPS must be enabled to use this app. Please enable GPS")
+                    .setPositiveButton("Yes", (dialogInterface, i) -> {
+                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            //BELOW IS THE OLD WAY OF CODING THAT NO LONGER WORKS - NEEDS TO BE UPDATED (I DO NOT KNOW HOW THE NEW WAY WORKS)
+                        startActivityForResult(intent, GPS_REQUEST_CODE);
+
+                    })
+                    .setCancelable(false)
+                    .show();
+        }
+        return false;
     }
 
     private void checkMyPermission(){
