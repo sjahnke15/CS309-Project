@@ -1,16 +1,21 @@
 package test.connect.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -18,11 +23,13 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
-public class Map extends AppCompatActivity {
+public class Map extends AppCompatActivity implements OnMapReadyCallback {
 Button toHome;
 Button toWildlife;
 Button toTrailList;
 Button toTrailInfo;
+    boolean isPermissionGranted;
+    MapView mapview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,8 +92,13 @@ Button toTrailInfo;
                 startActivity(toTrailInfo);
             }
         });
-
+        mapview = findViewById(R.id.map_view);
         checkMyPermission();
+        if (isPermissionGranted){
+            mapview.getMapAsync(this);
+            mapview.onCreate(savedInstanceState);
+        }
+
     }
     private void checkMyPermission(){
         Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener(){
@@ -94,6 +106,7 @@ Button toTrailInfo;
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                 Toast.makeText(Map.this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                isPermissionGranted = true;
             }
 
             @Override
@@ -110,5 +123,44 @@ Button toTrailInfo;
                 permissionToken.continuePermissionRequest();
             }
         }).check();
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+    }
+    @Override
+    public void onStart(){
+        super.onStart();
+        mapview.onStart();
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        mapview.onResume();
+    }
+    @Override
+    public void onPause(){
+        super.onPause();
+        mapview.onPause();
+    }
+    @Override
+    public void onStop(){
+        super.onStop();
+        mapview.onStop();
+    }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        mapview.onDestroy();
+    }
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState){
+        super.onSaveInstanceState(outState, outPersistentState);
+        mapview.onSaveInstanceState(outState);
+    }
+    @Override
+    public void onLowMemory(){
+        super.onLowMemory();
+        mapview.onLowMemory();
     }
 }
