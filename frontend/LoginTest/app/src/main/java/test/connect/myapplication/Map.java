@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -16,6 +18,8 @@ import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -28,6 +32,8 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -35,6 +41,10 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class Map extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 Button toHome;
@@ -46,6 +56,8 @@ Button toTrailInfo;
     FloatingActionButton fab;
     private FusedLocationProviderClient mlocationClient;
     private int GPS_REQUEST_CODE = 9001;
+    EditText locSearch;
+    ImageView search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +122,8 @@ Button toTrailInfo;
             }
         });
         fab = findViewById(R.id.fab);
-
+        locSearch = findViewById(R.id.et_search);
+        search = findViewById(R.id.searchIcon);
         checkMyPermission();
 
         initMap();
@@ -122,6 +135,25 @@ Button toTrailInfo;
             }
         });
 
+        search.setOnClickListener(this::geoLocate);
+
+    }
+
+    private void geoLocate(View view) {
+        String locationName = locSearch.getText().toString();
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+
+        try{
+            List<Address> addressList = geocoder.getFromLocationName(locationName, 1);
+            if(addressList.size() > 0){
+                Address address = addressList.get(0);
+                gotoLocation(address.getLatitude(), address.getLongitude());
+                mGoogleMap.addMarker(new MarkerOptions().position(new LatLng(address.getLatitude(),address.getLongitude())));
+                Toast.makeText(this, address.getLocality(), Toast.LENGTH_SHORT).show();
+            }
+        }catch (IOException e){
+
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -161,8 +193,8 @@ Button toTrailInfo;
                     .setTitle("GPS Permission")
                     .setMessage("GPS must be enabled to use this app. Please enable GPS")
                     .setPositiveButton("Yes", (dialogInterface, i) -> {
-                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             //BELOW IS THE OLD WAY OF CODING THAT NO LONGER WORKS - NEEDS TO BE UPDATED (I DO NOT KNOW HOW THE NEW WAY WORKS)
+                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                         startActivityForResult(intent, GPS_REQUEST_CODE);
 
                     })
@@ -218,5 +250,20 @@ Button toTrailInfo;
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==GPS_REQUEST_CODE) {
+            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+            boolean providerEnable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            if(providerEnable){
+                Toast.makeText(this, "GPS is enabled", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(this, "GPS is not enabled", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
