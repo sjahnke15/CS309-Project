@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import test.connect.myapplication.api.SlimCallback;
+import test.connect.myapplication.model.Review;
 import test.connect.myapplication.model.Trail;
 
 public class TrailList extends AppCompatActivity {
@@ -23,7 +24,7 @@ Button backToMap;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail_list2);
-        Button start = findViewById(R.id.btnStartTrail);
+        Button ToReview = findViewById(R.id.btnReviewTrail);
 
         TextView TrailName1 = findViewById(R.id.txtTrail1);
         TextView TrailName2 = findViewById(R.id.txtTrail2);
@@ -72,6 +73,18 @@ Button backToMap;
                 back.putExtra("password", password);
                 back.putExtra("userID", userID);
                 startActivity(back);
+            }
+        });
+
+        ToReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent review = new Intent(TrailList.this, ReviewRating.class);
+                review.putExtra("username", username);
+                review.putExtra("email", email);
+                review.putExtra("password", password);
+                review.putExtra("userID", userID);
+                startActivity(review);
             }
         });
     }
