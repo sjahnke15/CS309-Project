@@ -95,9 +95,9 @@ public class UserService {
 	 **/
 	public int newPassword(String i, String p, String nP) {
 		User user = retrieveUserByUsername(i);
-		if (user.equals(null)) {
+		if (user == null) {
 			user = retrieveUserByEmail(i);
-			if (user.equals(null)) {
+			if (user == null) {
 				return 2;
 			}
 		}
