@@ -5,10 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Wildlife extends AppCompatActivity {
-Button back;
+    Button back;
+    Spinner trailChats;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,5 +39,11 @@ Button back;
                 startActivity(back);
             }
         });
+
+        trailChats = (Spinner)findViewById(R.id.trailChats);
+        List<String> trails = new ArrayList<String>();
+
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_wildlife2, trails);
+        //trailChats.setAdapter(adapter);
     }
 }
