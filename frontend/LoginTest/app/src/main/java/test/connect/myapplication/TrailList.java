@@ -25,6 +25,7 @@ Button backToMap;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail_list2);
         Button ToReview = findViewById(R.id.btnReviewTrail);
+        Button Refresh = findViewById(R.id.btnRefresh);
 
         TextView TrailName1 = findViewById(R.id.txtTrail1);
         TextView TrailName2 = findViewById(R.id.txtTrail2);
@@ -46,22 +47,28 @@ Button backToMap;
         String password = intent.getStringExtra("password");
         int userID = intent.getIntExtra("userID", 0);
 
-        GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(trails->{
-            TrailName1.setText("");
-            for (int i = 0; i < trails.size(); i++){
-                if(i == 0){
-                    TrailName1.setText(trails.get(i).getName());
-                    TrailDist1.setText("Placeholder");
-                    TrailDiff1.setText(String.valueOf(trails.get(i).getDifficulty()));
-                    TrailRating1.setText("Placeholder");
-                }
-                else if(i == 1){
-                    TrailName2.setText(trails.get(i).getName());
-                    TrailDiff2.setText(String.valueOf(trails.get(i).getDifficulty()));
-                }
-            }
+        Refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(trails->{
+                    TrailName1.setText("");
+                    for (int i = 0; i < trails.size(); i++){
+                        if(i == 0){
+                            TrailName1.setText(trails.get(i).getName());
+                            TrailDist1.setText("Placeholder");
+                            TrailDiff1.setText(String.valueOf(trails.get(i).getDifficulty()));
+                            TrailRating1.setText("Placeholder");
+                        }
+                        else if(i == 1){
+                            TrailName2.setText(trails.get(i).getName());
+                            TrailDiff2.setText(String.valueOf(trails.get(i).getDifficulty()));
+                        }
+                    }
 
-        }, "multipleTrailsApi"));
+                }, "multipleTrailsApi"));
+            }
+        });
+
 
         backToMap = (Button)findViewById(R.id.btnBackToMap);
         backToMap.setOnClickListener(new View.OnClickListener() {
