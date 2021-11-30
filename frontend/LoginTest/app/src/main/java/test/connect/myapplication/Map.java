@@ -163,7 +163,7 @@ Button toTrailInfo;
                 Location location = task.getResult();
                 gotoLocation(location.getLatitude(), location.getLongitude());
             }
-        })
+        });
     }
 
     private void gotoLocation(double latitude, double longitude) {
