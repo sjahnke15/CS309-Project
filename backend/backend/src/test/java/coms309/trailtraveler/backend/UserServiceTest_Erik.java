@@ -79,15 +79,15 @@ public class UserServiceTest_Erik {
 		tRepo.save(t0);
 		
 		Trail t1 = new Trail();
-		t0.setId(1);
-		t0.setName("Trail 1 - Greenrock");
-		t0.setDifficulty(5);
+		t1.setId(1);
+		t1.setName("Trail 1 - Greenrock");
+		t1.setDifficulty(5);
 		tRepo.save(t1);
 		
 		Trail t2 = new Trail();
-		t0.setId(2);
-		t0.setName("Trail 2 - Bluerock");
-		t0.setDifficulty(7);
+		t2.setId(2);
+		t2.setName("Trail 2 - Bluerock");
+		t2.setDifficulty(7);
 		tRepo.save(t2);
 		
 		assertEquals(0, tServ.retrieveTrailByID(0).getId());
@@ -96,7 +96,7 @@ public class UserServiceTest_Erik {
 		
 		assertEquals(1, tServ.retrieveTrailByID(1).getId());
 		assertEquals("Trail 1 - Greenrock", tServ.retrieveTrailByID(1).getName());
-		assertEquals(4, tServ.retrieveTrailByID(1).getDifficulty());
+		assertEquals(5, tServ.retrieveTrailByID(1).getDifficulty());
 		
 		assertEquals(2, tServ.retrieveTrailByID(2).getId());
 		assertEquals("Trail 2 - Bluerock", tServ.retrieveTrailByID(2).getName());
@@ -121,15 +121,15 @@ public class UserServiceTest_Erik {
 		tRepo.save(t0);
 		
 		Trail t1 = new Trail();
-		t0.setId(1);
-		t0.setName("Trail 1 - Greenrock");
-		t0.setDifficulty(5);
+		t1.setId(1);
+		t1.setName("Trail 1 - Greenrock");
+		t1.setDifficulty(5);
 		tRepo.save(t1);
 		
 		Trail t2 = new Trail();
-		t0.setId(2);
-		t0.setName("Trail 2 - Bluerock");
-		t0.setDifficulty(7);
+		t2.setId(2);
+		t2.setName("Trail 2 - Bluerock");
+		t2.setDifficulty(7);
 		tRepo.save(t2);
 		
 		assertEquals(0, tServ.retrieveTrailByName("Trail 0 - Redrock").getId());
@@ -138,7 +138,7 @@ public class UserServiceTest_Erik {
 		
 		assertEquals(1, tServ.retrieveTrailByName("Trail 1 - Greenrock").getId());
 		assertEquals("Trail 1 - Greenrock", tServ.retrieveTrailByName("Trail 1 - Greenrock").getName());
-		assertEquals(4, tServ.retrieveTrailByName("Trail 1 - Greenrock").getDifficulty());
+		assertEquals(5, tServ.retrieveTrailByName("Trail 1 - Greenrock").getDifficulty());
 		
 		assertEquals(2, tServ.retrieveTrailByName("Trail 2 - Bluerock").getId());
 		assertEquals("Trail 2 - Bluerock", tServ.retrieveTrailByName("Trail 2 - Bluerock").getName());
@@ -163,15 +163,15 @@ public class UserServiceTest_Erik {
 		tRepo.save(t0);
 		
 		Trail t1 = new Trail();
-		t0.setId(1);
-		t0.setName("Trail 1 - Greenrock");
-		t0.setDifficulty(5);
+		t1.setId(1);
+		t1.setName("Trail 1 - Greenrock");
+		t1.setDifficulty(5);
 		tRepo.save(t1);
 		
 		Trail t2 = new Trail();
-		t0.setId(2);
-		t0.setName("Trail 2 - Bluerock");
-		t0.setDifficulty(7);
+		t2.setId(2);
+		t2.setName("Trail 2 - Bluerock");
+		t2.setDifficulty(7);
 		tRepo.save(t2);
 		
 		assertEquals(1, tServ.retrieveTrailListByDifficulty(5).get(0).getId());
