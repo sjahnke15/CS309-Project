@@ -63,4 +63,9 @@ public class UserController {
 	User postUserByPath(@PathVariable String email, @PathVariable String username, @PathVariable String password) {
 		return us.postUser(email, username, password);
 	}
+	
+	@PostMapping("user/post/{email/username}/{password}/{newPassword}")
+	int setNewPassword(@PathVariable String user, @PathVariable String password, @PathVariable String newPassword) {
+		return us.newPassword(user, password, newPassword);
+	}
 }

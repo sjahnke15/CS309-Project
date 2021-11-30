@@ -39,4 +39,19 @@ public class TrailController {
 	Trail postTrailByPath(@PathVariable String name, @PathVariable int difficulty) {
 		return ts.postTrail(name, difficulty);
 	}
+	
+	@GetMapping("trail/id/{id}")
+	Trail getTrailByID(@PathVariable int id) {
+		return ts.retrieveTrailByID(id);
+	}
+	
+	@GetMapping("trail/name/{name}")
+	Trail getTrailByID(@PathVariable String name) {
+		return ts.retrieveTrailByName(name);
+	}
+	
+	@GetMapping("trail/difficulty/{difficulty}")
+	List<Trail> getTrailListByDifficulty(@PathVariable int dif) {
+		return ts.retrieveTrailListByDifficulty(dif);
+	}
 }
