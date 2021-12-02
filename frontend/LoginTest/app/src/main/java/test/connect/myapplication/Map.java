@@ -1,5 +1,11 @@
 package test.connect.myapplication;
 
+import static android.widget.Toast.makeText;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -7,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -14,7 +21,8 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+
+import android.os.StrictMode;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
@@ -28,11 +36,10 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
+
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.karumi.dexter.Dexter;
@@ -55,7 +62,6 @@ Button toTrailInfo;
     GoogleMap mGoogleMap;
     FloatingActionButton fab;
     private FusedLocationProviderClient mlocationClient;
-    private int GPS_REQUEST_CODE = 9001;
     EditText locSearch;
     ImageView search;
 
@@ -127,7 +133,7 @@ Button toTrailInfo;
         checkMyPermission();
 
         initMap();
-        mlocationClient = new FusedLocationProviderClient(this);
+        mlocationClient = new FusedLocationProviderClient(Map.this);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,13 +141,17 @@ Button toTrailInfo;
             }
         });
 
-        search.setOnClickListener(this::geoLocate);
-
+        search.setOnClickListener(Map.this::geoLocate);
+        StrictMode.enableDefaults();
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectLeakedClosableObjects()
+                .penaltyLog()
+                .build());
     }
 
     private void geoLocate(View view) {
         String locationName = locSearch.getText().toString();
-        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        Geocoder geocoder = new Geocoder(Map.this, Locale.getDefault());
 
         try{
             List<Address> addressList = geocoder.getFromLocationName(locationName, 1);
@@ -149,9 +159,9 @@ Button toTrailInfo;
                 Address address = addressList.get(0);
                 gotoLocation(address.getLatitude(), address.getLongitude());
                 mGoogleMap.addMarker(new MarkerOptions().position(new LatLng(address.getLatitude(),address.getLongitude())));
-                Toast.makeText(this, address.getLocality(), Toast.LENGTH_SHORT).show();
+                makeText(Map.this, address.getLocality(), Toast.LENGTH_SHORT).show();
             }
-        }catch (IOException e){
+        }catch (IOException ignored){
 
         }
     }
@@ -163,7 +173,7 @@ Button toTrailInfo;
                 Location location = task.getResult();
                 gotoLocation(location.getLatitude(), location.getLongitude());
             }
-        })
+        });
     }
 
     private void gotoLocation(double latitude, double longitude) {
@@ -177,7 +187,8 @@ Button toTrailInfo;
         if (isPermissionGranted){
             if(isGPSenable()){
                 SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.frag);
-                supportMapFragment.getMapAsync(this);
+                assert supportMapFragment != null;
+                supportMapFragment.getMapAsync(Map.this);
             }
         }
     }
@@ -189,13 +200,13 @@ Button toTrailInfo;
             return true;
         }
         else{
-            AlertDialog alertDialog = new AlertDialog.Builder(this)
+            AlertDialog alertDialog = new AlertDialog.Builder(Map.this)
                     .setTitle("GPS Permission")
                     .setMessage("GPS must be enabled to use this app. Please enable GPS")
                     .setPositiveButton("Yes", (dialogInterface, i) -> {
             //BELOW IS THE OLD WAY OF CODING THAT NO LONGER WORKS - NEEDS TO BE UPDATED (I DO NOT KNOW HOW THE NEW WAY WORKS)
                         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        startActivityForResult(intent, GPS_REQUEST_CODE);
+                        someActivityResultLauncher.launch(intent);
 
                     })
                     .setCancelable(false)
@@ -205,11 +216,11 @@ Button toTrailInfo;
     }
 
     private void checkMyPermission(){
-        Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener(){
+        Dexter.withContext(Map.this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener(){
 
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                Toast.makeText(Map.this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                makeText(Map.this, "Permission Granted", Toast.LENGTH_SHORT).show();
                 isPermissionGranted = true;
             }
 
@@ -252,10 +263,11 @@ Button toTrailInfo;
 
     }
 
+    /*BELOW IS THE OLD WAY OF CODING THAT NO LONGER WORKS - NEEDS TO BE UPDATED (I DO NOT KNOW HOW THE NEW WAY WORKS)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==GPS_REQUEST_CODE) {
+       // if(requestCode==GPS_REQUEST_CODE) {
             LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
             boolean providerEnable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
             if(providerEnable){
@@ -265,5 +277,24 @@ Button toTrailInfo;
                 Toast.makeText(this, "GPS is not enabled", Toast.LENGTH_SHORT).show();
             }
         }
-    }
+    }*/
+
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    int GPS_REQUEST_CODE = 9001;
+                    if (result.getResultCode()== GPS_REQUEST_CODE) {
+                        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+                        boolean providerEnable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+                        if(providerEnable){
+                            Toast.makeText(Map.this, "GPS is enabled", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(Map.this, "GPS is not enabled", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            });
 }
