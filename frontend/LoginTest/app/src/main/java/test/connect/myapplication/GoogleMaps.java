@@ -22,6 +22,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +70,7 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
     private static final float DEFAULT_ZOOM = 15f;
 
     private EditText mSearchText;
+    private ImageView mGps;
 
     private Boolean mLocationPermissionGranted = false;
     private GoogleMap mMap;
@@ -79,6 +81,7 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_maps);
         mSearchText = (EditText) findViewById(R.id.input_search);
+        mGps = (ImageView) findViewById(R.id.ic_gps);
 
         getLocationPermission();
 
@@ -95,6 +98,13 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
                     geoLocate();
                 }
                 return false;
+            }
+        });
+
+        mGps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDeviceLocation();
             }
         });
         hideSoftKeyboard();
