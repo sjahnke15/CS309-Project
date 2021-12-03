@@ -25,7 +25,7 @@ Button addReview;
         backToMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(TrailInfo.this, Map.class);
+                Intent back = new Intent(TrailInfo.this, GoogleMaps.class);
                 back.putExtra("username", username);
                 back.putExtra("email", email);
                 back.putExtra("password", password);

@@ -1,10 +1,5 @@
 package test.connect.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import static test.connect.myapplication.api.ApiClientFactory.GetTrailApi;
-import static test.connect.myapplication.api.ApiClientFactory.GetReviewApi;
-
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,14 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-
-import java.util.List;
-
-import test.connect.myapplication.api.SlimCallback;
-import test.connect.myapplication.model.Review;
-import test.connect.myapplication.model.Trail;
 
 public class homeScreen extends AppCompatActivity {
     Button btnBack;
@@ -91,7 +82,7 @@ public class homeScreen extends AppCompatActivity {
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toMap = new Intent(homeScreen.this, Map.class);
+                Intent toMap = new Intent(homeScreen.this, GoogleMaps.class);
                 toMap.putExtra("username", username);
                 toMap.putExtra("email", email);
                 toMap.putExtra("password", password);
