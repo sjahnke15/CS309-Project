@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import test.connect.myapplication.api.SlimCallback;
+import test.connect.myapplication.model.Review;
 import test.connect.myapplication.model.Trail;
 
 public class TrailList extends AppCompatActivity {
@@ -23,16 +24,22 @@ Button backToMap;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail_list2);
-        Button Trail1 = findViewById(R.id.btnTrail1);
-        Button Trail2 = findViewById(R.id.btnTrail2);
-        Button Trail3 = findViewById(R.id.btnTrail3);
-        Button Trail4 = findViewById(R.id.btnTrail4);
-        Button Trail5 = findViewById(R.id.btnTrail5);
-        Button start = findViewById(R.id.btnStartTrail);
+        Button ToReview = findViewById(R.id.btnReviewTrail);
+        Button Refresh = findViewById(R.id.btnRefresh);
+
+        TextView TrailName1 = findViewById(R.id.txtTrail1);
+        TextView TrailName2 = findViewById(R.id.txtTrail2);
+        TextView TrailName3 = findViewById(R.id.txtTrail3);
+        TextView TrailName4 = findViewById(R.id.txtTrail4);
+        TextView TrailName5 = findViewById(R.id.txtTrail5);
 
         TextView TrailDist1 = findViewById(R.id.txtDistanceTrail1);
         TextView TrailDiff1 = findViewById(R.id.txtDifficultyTrail1);
         TextView TrailRating1 = findViewById(R.id.txtRatingTrail1);
+
+        TextView TrailDist2 = findViewById(R.id.txtDistanceTrail2);
+        TextView TrailDiff2 = findViewById(R.id.txtDifficultyTrail2);
+        TextView TrailRating2 = findViewById(R.id.txtRatingTrail2);
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
@@ -40,21 +47,28 @@ Button backToMap;
         String password = intent.getStringExtra("password");
         int userID = intent.getIntExtra("userID", 0);
 
-        GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(trails->{
-            Trail1.setText("");
-            for (int i = 0; i < trails.size(); i++){
-                if(i == 0){
-                    Trail1.setText(trails.get(i).getName());
-                    TrailDist1.setText("Placeholder");
-                    TrailDiff1.setText(String.valueOf(trails.get(i).getDifficulty()));
-                    TrailRating1.setText("Placeholder");
-                }
-                else if(i == 1){
-                    Trail2.setText(trails.get(i).getName());
-                }
-            }
+        Refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(trails->{
+                    TrailName1.setText("");
+                    for (int i = 0; i < trails.size(); i++){
+                        if(i == 0){
+                            TrailName1.setText(trails.get(i).getName());
+                            TrailDist1.setText("Placeholder");
+                            TrailDiff1.setText(String.valueOf(trails.get(i).getDifficulty()));
+                            TrailRating1.setText("Placeholder");
+                        }
+                        else if(i == 1){
+                            TrailName2.setText(trails.get(i).getName());
+                            TrailDiff2.setText(String.valueOf(trails.get(i).getDifficulty()));
+                        }
+                    }
 
-        }, "multipleUsersApi"));
+                }, "multipleTrailsApi"));
+            }
+        });
+
 
         backToMap = (Button)findViewById(R.id.btnBackToMap);
         backToMap.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +80,18 @@ Button backToMap;
                 back.putExtra("password", password);
                 back.putExtra("userID", userID);
                 startActivity(back);
+            }
+        });
+
+        ToReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent review = new Intent(TrailList.this, ReviewRating.class);
+                review.putExtra("username", username);
+                review.putExtra("email", email);
+                review.putExtra("password", password);
+                review.putExtra("userID", userID);
+                startActivity(review);
             }
         });
     }
