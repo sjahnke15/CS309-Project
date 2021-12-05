@@ -2,6 +2,7 @@ package test.connect.myapplication;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -81,6 +83,53 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
         getLocationPermission();
 
         init();
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+
+        Button btnWildlife = (Button)findViewById(R.id.toWildLife);
+        btnWildlife.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userInfo = new Intent(GoogleMaps.this,Wildlife.class);
+                userInfo.putExtra("username", username);
+                userInfo.putExtra("email", email);
+                userInfo.putExtra("password", password);
+                userInfo.putExtra("userID", userID);
+                startActivity(userInfo);
+            }
+        });
+
+        Button btnTrailInfo = (Button)findViewById(R.id.toTrailInfo);
+        btnTrailInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userInfo = new Intent(GoogleMaps.this,TrailInfo.class);
+                userInfo.putExtra("username", username);
+                userInfo.putExtra("email", email);
+                userInfo.putExtra("password", password);
+                userInfo.putExtra("userID", userID);
+                startActivity(userInfo);
+            }
+        });
+
+        Button btnBack = (Button)findViewById(R.id.toHomeScreen);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userInfo = new Intent(GoogleMaps.this,homeScreen.class);
+                userInfo.putExtra("username", username);
+                userInfo.putExtra("email", email);
+                userInfo.putExtra("password", password);
+                userInfo.putExtra("userID", userID);
+                startActivity(userInfo);
+            }
+        });
+
+
     }
 
     private void init(){
