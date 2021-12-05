@@ -1,11 +1,11 @@
 package test.connect.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Wildlife extends AppCompatActivity {
 Button back;
@@ -24,7 +24,7 @@ Button back;
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(Wildlife.this, Map.class);
+                Intent back = new Intent(Wildlife.this, GoogleMaps.class);
                 back.putExtra("username", username);
                 back.putExtra("email", email);
                 back.putExtra("password", password);

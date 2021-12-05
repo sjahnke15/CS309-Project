@@ -1,29 +1,28 @@
 package test.connect.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import static test.connect.myapplication.api.ApiClientFactory.GetTrailApi;
-import static test.connect.myapplication.api.ApiClientFactory.GetReviewApi;
-
-
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
-import test.connect.myapplication.api.SlimCallback;
-import test.connect.myapplication.model.Review;
-import test.connect.myapplication.model.Trail;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 public class homeScreen extends AppCompatActivity {
-Button btnBack;
-Button btnUserInfo;
-Button map;
-Button weather;
-TextView testingText;
-TextView userTemp;
+    Button btnBack;
+    Button btnUserInfo;
+    Button map;
+    Button weather;
+    TextView testingText;
+    TextView userTemp;
+    private static final String TAG = "GoogleMaps";
+    private static final int ERROR_DIALOG_REQUEST = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +82,7 @@ TextView userTemp;
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toMap = new Intent(homeScreen.this, Map.class);
+                Intent toMap = new Intent(homeScreen.this, GoogleMaps.class);
                 toMap.putExtra("username", username);
                 toMap.putExtra("email", email);
                 toMap.putExtra("password", password);
@@ -122,6 +121,38 @@ TextView userTemp;
         //    }
         //});
 
+        if (isServicesOk()){
+            init();
+        }
+    }
+    private void init(){
+        map = (Button) findViewById(R.id.btnToMap);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(homeScreen.this, GoogleMaps.class);
+                startActivity(intent);
+            }
+        });
+    }
 
+    public boolean isServicesOk(){
+        Log.d(TAG, "isServicesOK: checking google maps availability");
+
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(homeScreen.this);
+
+        if(available == ConnectionResult.SUCCESS){
+            Log.d(TAG, "isServiceOk: Google Maps is working");
+            return true;
+        }
+        else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+            Log.d(TAG, "isServiceOk: An error caused Google Maps to stop working, but we resolved it");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(homeScreen.this, available, ERROR_DIALOG_REQUEST);
+            dialog.show();
+        }
+        else{
+            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 }
