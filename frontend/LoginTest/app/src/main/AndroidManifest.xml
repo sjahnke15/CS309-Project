@@ -33,7 +33,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyAqWI0zmTjebONkQDT3WQeubRqRVAjmLsg" />
 
         <activity
             android:name=".GoogleMaps"
@@ -55,9 +55,6 @@
             android:exported="true" />
         <activity
             android:name=".Weather"
-            android:exported="true" />
-        <activity
-            android:name=".Map"
             android:exported="true" />
         <activity
             android:name=".UserInfo"
