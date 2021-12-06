@@ -1,11 +1,8 @@
 package test.connect.myapplication;
 
-import static test.connect.myapplication.api.ApiClient.GetWeatherApi;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,20 +13,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import test.connect.myapplication.api.ApiClient;
-import test.connect.myapplication.api.ApiClientFactory;
-import test.connect.myapplication.api.Main;
-import test.connect.myapplication.api.SlimCallback;
-import test.connect.myapplication.api.UserApi;
 import test.connect.myapplication.api.WeatherApi;
 import test.connect.myapplication.api.weather;
-import test.connect.myapplication.model.User;
 
 
 public class Weather extends AppCompatActivity {
-Button toHome;
-ImageView search;
-TextView tempText, descText, humidityText;
-EditText textField;
+    ImageView toHome;
+    ImageView search;
+    TextView tempText, descText, humidityText;
+    EditText textField;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +29,7 @@ EditText textField;
         tempText = findViewById(R.id.tempText);
         descText = findViewById(R.id.descText);
         humidityText = findViewById(R.id.humidityText);
-        toHome = (Button)findViewById(R.id.btnBackHomeFromWeather);
+        toHome = (ImageView)findViewById(R.id.btnBackHomeFromWeather);
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");

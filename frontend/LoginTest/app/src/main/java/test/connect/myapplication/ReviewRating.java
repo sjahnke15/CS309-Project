@@ -1,6 +1,5 @@
 package test.connect.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
 import static test.connect.myapplication.api.ApiClientFactory.GetReviewApi;
 
 import android.content.Intent;
@@ -9,16 +8,19 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.Review;
 
 public class ReviewRating extends AppCompatActivity {
-    Button back;
-    Button toTrailInfo;
+    ImageView back;
+    ImageView toTrailInfo;
     RatingBar ratingBar;
     TextView leaveReview;
     Button submit;
@@ -68,7 +70,7 @@ public class ReviewRating extends AppCompatActivity {
         });
 
 
-        back = (Button)findViewById(R.id.btnBackToTrailHistory);
+        back = (ImageView)findViewById(R.id.btnBackToTrailHistory);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +83,7 @@ public class ReviewRating extends AppCompatActivity {
             }
         });
 
-        toTrailInfo = (Button)findViewById(R.id.btnTrailInfo);
+        toTrailInfo = (ImageView)findViewById(R.id.btnTrailInfo);
         toTrailInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

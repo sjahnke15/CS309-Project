@@ -1,22 +1,23 @@
 package test.connect.myapplication;
 
 import static test.connect.myapplication.api.ApiClientFactory.GetTrailApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
 import test.connect.myapplication.api.SlimCallback;
-import test.connect.myapplication.model.Review;
 import test.connect.myapplication.model.Trail;
 
 public class TrailList extends AppCompatActivity {
-Button backToMap;
+    ImageView backToMap;
 
 
 
@@ -25,7 +26,7 @@ Button backToMap;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail_list2);
         Button ToReview = findViewById(R.id.btnReviewTrail);
-        Button Refresh = findViewById(R.id.btnRefresh);
+        ImageView Refresh = findViewById(R.id.btnRefresh);
 
         TextView TrailName1 = findViewById(R.id.txtTrail1);
         TextView TrailName2 = findViewById(R.id.txtTrail2);
@@ -70,7 +71,7 @@ Button backToMap;
         });
 
 
-        backToMap = (Button)findViewById(R.id.btnBackToMap);
+        backToMap = (ImageView)findViewById(R.id.btnBackToMap);
         backToMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -18,33 +18,10 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
-
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back "
-        app:layout_constraintBottom_toTopOf="@+id/textView_home"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372" />
-
-    <Button
-        android:id="@+id/activity_home_screen_toUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Info"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.159" />
 
     <TextView
         android:id="@+id/activity_home_screen_testTextView"
@@ -58,29 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.676" />
-
-    <Button
-        android:id="@+id/btnToMap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Map"
-        app:layout_constraintBottom_toTopOf="@+id/textView_home"
-        app:layout_constraintEnd_toStartOf="@+id/activity_home_screen_toUser"
-        app:layout_constraintHorizontal_bias="0.456"
-        app:layout_constraintStart_toEndOf="@+id/btnBack"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372" />
-
-    <Button
-        android:id="@+id/btnToWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weather"
-        app:layout_constraintBottom_toTopOf="@+id/activity_home_screen_testTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_home"
-        app:layout_constraintVertical_bias="0.562" />
 
     <TextView
         android:id="@+id/txtCurrentWeather"
@@ -109,9 +63,55 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnToWeather"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_home"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.89" />
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_home"
+        app:layout_constraintEnd_toStartOf="@+id/activity_home_screen_toUser"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/btnToMap"
+        android:layout_width="41dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_home"
+        app:layout_constraintEnd_toStartOf="@+id/activity_home_screen_toUser"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622"
+        app:srcCompat="@drawable/map" />
+
+    <ImageView
+        android:id="@+id/activity_home_screen_toUser"
+        android:layout_width="50dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/userinfo" />
+
+    <ImageView
+        android:id="@+id/btnToWeather"
+        android:layout_width="74dp"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_home_screen_testTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_home"
+        app:layout_constraintVertical_bias="0.701"
+        app:srcCompat="@drawable/weather" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

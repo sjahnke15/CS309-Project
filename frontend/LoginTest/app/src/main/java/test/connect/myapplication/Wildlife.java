@@ -3,12 +3,12 @@ package test.connect.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Wildlife extends AppCompatActivity {
-Button back;
+ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ Button back;
         String password = intent.getStringExtra("password");
         int userID = intent.getIntExtra("userID", 0);
 
-        back = (Button)findViewById(R.id.btnMapFromWildlife);
+        back = (ImageView)findViewById(R.id.btnMapFromWildlife);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
