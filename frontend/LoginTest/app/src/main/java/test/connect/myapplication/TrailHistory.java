@@ -1,15 +1,15 @@
 package test.connect.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TrailHistory extends AppCompatActivity {
-Button back;
-Button review;
+    ImageView back;
+    ImageView review;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,7 @@ Button review;
         String password = intent.getStringExtra("password");
         int userID = intent.getIntExtra("userID", 0);
 
-        back = (Button)findViewById(R.id.btnBackToUserInfo);
+        back = (ImageView)findViewById(R.id.btnBackToUserInfo);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,7 +34,7 @@ Button review;
             }
         });
 
-        review = (Button)findViewById(R.id.btnReviewRating);
+        review = (ImageView)findViewById(R.id.btnReviewRating);
         review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

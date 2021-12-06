@@ -1,14 +1,15 @@
 package test.connect.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
 import static test.connect.myapplication.api.ApiClientFactory.GetReviewApi;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
@@ -16,9 +17,9 @@ import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.Review;
 
 public class UserInfo extends AppCompatActivity {
-Button back;
-Button TrailHistory;
-TextView userReviews;
+    ImageView back;
+    ImageView TrailHistory;
+    TextView userReviews;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,7 @@ TextView userReviews;
         }, "multipleReviewsApi"));
 
 
-        back = (Button)findViewById(R.id.btnBackToHomeFromUserInfo);
+        back = (ImageView)findViewById(R.id.btnBackToHomeFromUserInfo);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +70,7 @@ TextView userReviews;
             }
         });
 
-        TrailHistory = (Button)findViewById(R.id.btnToTrailHistory);
+        TrailHistory = (ImageView)findViewById(R.id.btnToTrailHistory);
         TrailHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
