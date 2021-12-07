@@ -129,7 +129,7 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
             }
         });
 
-        Button btnTrailList = (Button)findViewById(R.id.toTrailList);
+        ImageView btnTrailList = (ImageView)findViewById(R.id.toTrailList);
         btnTrailList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
