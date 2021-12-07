@@ -34,7 +34,7 @@ public class WebSocketServer {
     sessionUsernameMap.put(session, username);
     usernameSessionMap.put(username, session);
 
-    String message = "User:" + username + " has Joined the Chat";
+    String message = "User: " + username + " has Joined the Chat";
     broadcast(message);
   }
 
@@ -44,15 +44,15 @@ public class WebSocketServer {
     logger.info("Entered into Message: Got Message:" + message);
     String username = sessionUsernameMap.get(session);
 
-    if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
+/*    if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
     {
       String destUsername = message.split(" ")[0].substring(1); // don't do this in your code!
       sendMessageToPArticularUser(destUsername, "[DM] " + username + ": " + message);
       sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
     } else // Message to whole chat
-    {
+    { */
       broadcast(username + ": " + message);
-    }
+//    }
   }
 
   @OnClose
@@ -73,14 +73,14 @@ public class WebSocketServer {
     logger.info("Entered into Error");
   }
 
-  private void sendMessageToPArticularUser(String username, String message) {
+/*  private void sendMessageToPArticularUser(String username, String message) {
     try {
       usernameSessionMap.get(username).getBasicRemote().sendText(message);
     } catch (IOException e) {
       logger.info("Exception: " + e.getMessage().toString());
       e.printStackTrace();
     }
-  }
+  } */
 
   private void broadcast(String message) {
     sessionUsernameMap.forEach((session, username) -> {
