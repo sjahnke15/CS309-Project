@@ -42,6 +42,18 @@ public class TrailList extends AppCompatActivity {
         TextView TrailDiff2 = findViewById(R.id.txtDifficultyTrail2);
         TextView TrailRating2 = findViewById(R.id.txtRatingTrail2);
 
+        TextView TrailDist3 = findViewById(R.id.txtDistanceTrail3);
+        TextView TrailDiff3 = findViewById(R.id.txtDifficultyTrail3);
+        TextView TrailRating3 = findViewById(R.id.txtRatingTrail3);
+
+        TextView TrailDist4 = findViewById(R.id.txtDistanceTrail4);
+        TextView TrailDiff4 = findViewById(R.id.txtDifficultyTrail4);
+        TextView TrailRating4 = findViewById(R.id.txtRatingTrail4);
+
+        TextView TrailDist5 = findViewById(R.id.txtDistanceTrail5);
+        TextView TrailDiff5 = findViewById(R.id.txtDifficultyTrail5);
+        TextView TrailRating5 = findViewById(R.id.txtRatingTrail5);
+
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         String email = intent.getStringExtra("email");
@@ -54,15 +66,27 @@ public class TrailList extends AppCompatActivity {
                 GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(trails->{
                     TrailName1.setText("");
                     for (int i = 0; i < trails.size(); i++){
-                        if(i == 0){
+                        if(i == 3){
                             TrailName1.setText(trails.get(i).getName());
                             TrailDist1.setText("Placeholder");
                             TrailDiff1.setText(String.valueOf(trails.get(i).getDifficulty()));
                             TrailRating1.setText("Placeholder");
                         }
-                        else if(i == 1){
+                        else if(i == 4){
                             TrailName2.setText(trails.get(i).getName());
                             TrailDiff2.setText(String.valueOf(trails.get(i).getDifficulty()));
+                        }
+                        else if(i == 5){
+                            TrailName3.setText(trails.get(i).getName());
+                            TrailDiff3.setText(String.valueOf(trails.get(i).getDifficulty()));
+                        }
+                        else if(i == 6){
+                            TrailName4.setText(trails.get(i).getName());
+                            TrailDiff4.setText(String.valueOf(trails.get(i).getDifficulty()));
+                        }
+                        else if(i == 7){
+                            TrailName5.setText(trails.get(i).getName());
+                            TrailDiff5.setText(String.valueOf(trails.get(i).getDifficulty()));
                         }
                     }
 
