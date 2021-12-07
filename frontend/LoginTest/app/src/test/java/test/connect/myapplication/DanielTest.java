@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import test.connect.myapplication.api.Main;
 import test.connect.myapplication.model.LoginTest;
 import test.connect.myapplication.model.Review;
 import test.connect.myapplication.model.User;
@@ -57,4 +58,19 @@ public class DanielTest {
         review.setReviewID(12);
         assertEquals(true, review.getReviewID()==12);
     }
+
+    @Test
+    public void getWeather(){
+        Main main = new Main();
+        main.setTemp("78.2");
+        assertEquals(true, main.getTemp().equals("78.2"));
+    }
+
+    @Test
+    public void getHumidity(){
+        Main main = new Main();
+        main.setHumidity("40");
+        assertEquals(false, main.getHumidity().equals("50"));
+    }
+
 }
