@@ -31,6 +31,9 @@ public class Trail {
 	private String name;
 	
 	/**  **/
+	private int distance;
+
+	/**  **/
 	private int difficulty;
 	
 	/**  **/
@@ -74,5 +77,13 @@ public class Trail {
 	/**  **/
 	public void addReview(Review r) {
 		reviews.add(r);
+	}
+
+	public int getDistance() {
+		return distance;
+	}
+
+	public void setDistance(int distance) {
+		this.distance = distance;
 	}
 }

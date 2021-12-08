@@ -35,9 +35,9 @@ public class TrailController {
 	 * @return
 	 * 	If successful, returns the trail object created and and added to the repository.
 	 *  **/
-	@PostMapping("trail/post/{name}/{difficulty}")
-	Trail postTrailByPath(@PathVariable String name, @PathVariable int difficulty) {
-		return ts.postTrail(name, difficulty);
+	@PostMapping("trail/post/{name}/{difficulty}{distance}")
+	Trail postTrailByPath(@PathVariable String name, @PathVariable int difficulty, @PathVariable int distance) {
+		return ts.postTrail(name, difficulty, distance);
 	}
 	
 	@GetMapping("trail/id/{id}")
@@ -53,5 +53,10 @@ public class TrailController {
 	@GetMapping("trail/difficulty/{difficulty}")
 	List<Trail> getTrailListByDifficulty(@PathVariable int dif) {
 		return ts.retrieveTrailListByDifficulty(dif);
+	}
+	
+	@GetMapping("trail/averageRating/{trailName}")
+	int getAverageTrailRating(@PathVariable String trailName) {
+		return ts.retrieveTrailRating(trailName);
 	}
 }
