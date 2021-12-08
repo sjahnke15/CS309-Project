@@ -56,7 +56,7 @@ public class TrailController {
 	}
 	
 	@GetMapping("trail/averageRating/{trailName}")
-	int getAverageTrailRating(@PathVariable String trailName) {
+	double getAverageTrailRating(@PathVariable String trailName) {
 		return ts.retrieveTrailRating(trailName);
 	}
 }

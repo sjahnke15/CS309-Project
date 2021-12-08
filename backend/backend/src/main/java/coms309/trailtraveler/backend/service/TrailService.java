@@ -99,17 +99,17 @@ public class TrailService {
 	}
 
 	/** Returns -1 if there is no trail, and returns 0 if there is no review for that trail. **/
-	public int retrieveTrailRating(String trailName) {
+	public double retrieveTrailRating(String trailName) {
 		
 		List<Trail> trailList = tRepo.findAll();
 		for(int i = 0; i < trailList.size(); i++) {
 			if(trailList.get(i).getName().equals(trailName)) {
-				int sum = 0;
+				double sum = 0;
 				List<Review> r = trailList.get(i).getReviews();
 				for(int j = 0; j < r.size(); j++) {
 					sum += r.get(j).getRating();
 				}
-				return sum / r.size();
+				return sum / (double) r.size();
 			}
 		}
 		return -1;
