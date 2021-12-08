@@ -104,12 +104,7 @@ public class TrailService {
 		List<Trail> trailList = tRepo.findAll();
 		for(int i = 0; i < trailList.size(); i++) {
 			if(trailList.get(i).getName().equals(trailName)) {
-				double sum = 0;
-				List<Review> r = trailList.get(i).getReviews();
-				for(int j = 0; j < r.size(); j++) {
-					sum += r.get(j).getRating();
-				}
-				return sum / (double) r.size();
+				return trailList.get(i).getAverageRating();
 			}
 		}
 		return -1;

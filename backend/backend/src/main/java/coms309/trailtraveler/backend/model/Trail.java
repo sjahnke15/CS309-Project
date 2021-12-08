@@ -30,6 +30,7 @@ public class Trail {
 	/**  **/
 	private String name;
 	
+	
 	/**  **/
 	private int distance;
 
@@ -85,5 +86,13 @@ public class Trail {
 
 	public void setDistance(int distance) {
 		this.distance = distance;
+	}
+
+	public double getAverageRating() {
+		double sum = 0;
+		for(int j = 0; j < reviews.size(); j++) {
+			sum += reviews.get(j).getRating();
+		}
+		return sum / (double) reviews.size();
 	}
 }
