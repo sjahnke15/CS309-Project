@@ -71,7 +71,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.352"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/trailPicker"
@@ -120,19 +120,7 @@
         app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494"
+        app:layout_constraintVertical_bias="0.516"
         app:srcCompat="@drawable/trailhistory" />
-
-    <ImageView
-        android:id="@+id/btnTrailInfo"
-        android:layout_width="49dp"
-        android:layout_height="46dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtLeaveReview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.717"
-        app:layout_constraintStart_toEndOf="@+id/btnBackToTrailHistory"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.489"
-        app:srcCompat="@drawable/trailinfo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

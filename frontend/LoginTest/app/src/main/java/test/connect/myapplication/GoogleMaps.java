@@ -102,18 +102,6 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
             }
         });
 
-        ImageView btnTrailInfo = (ImageView)findViewById(R.id.toTrailInfo);
-        btnTrailInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent userInfo = new Intent(GoogleMaps.this,TrailInfo.class);
-                userInfo.putExtra("username", username);
-                userInfo.putExtra("email", email);
-                userInfo.putExtra("password", password);
-                userInfo.putExtra("userID", userID);
-                startActivity(userInfo);
-            }
-        });
 
         ImageView btnBack = (ImageView)findViewById(R.id.toHomeScreen);
         btnBack.setOnClickListener(new View.OnClickListener() {
