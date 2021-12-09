@@ -6,27 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".TrailInfo">
 
-    <Button
+    <ImageView
         android:id="@+id/btnBackToMapFromTrailInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To Map"
+        android:layout_width="54dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/map" />
 
-    <Button
+    <ImageView
         android:id="@+id/btnAddReviewFromTrailInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add a Review!"
+        android:layout_width="57dp"
+        android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toEndOf="@+id/btnBackToMapFromTrailInfo"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/review" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

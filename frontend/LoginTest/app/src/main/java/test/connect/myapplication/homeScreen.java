@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,10 +15,10 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 public class homeScreen extends AppCompatActivity {
-    Button btnBack;
-    Button btnUserInfo;
-    Button map;
-    Button weather;
+    ImageView btnBack;
+    ImageView btnUserInfo;
+    ImageView map;
+    ImageView weather;
     TextView testingText;
     TextView userTemp;
     private static final String TAG = "GoogleMaps";
@@ -52,7 +52,7 @@ public class homeScreen extends AppCompatActivity {
 
 
 
-        btnBack = (Button)findViewById(R.id.btnBack);
+        btnBack = (ImageView)findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +65,7 @@ public class homeScreen extends AppCompatActivity {
             }
         });
 
-        btnUserInfo = (Button)findViewById(R.id.activity_home_screen_toUser);
+        btnUserInfo = (ImageView)findViewById(R.id.activity_home_screen_toUser);
         btnUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +78,7 @@ public class homeScreen extends AppCompatActivity {
             }
         });
 
-        map = (Button)findViewById(R.id.btnToMap);
+        map = (ImageView)findViewById(R.id.btnToMap);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +91,7 @@ public class homeScreen extends AppCompatActivity {
             }
         });
 
-        weather = (Button)findViewById(R.id.btnToWeather);
+        weather = (ImageView)findViewById(R.id.btnToWeather);
         weather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +126,7 @@ public class homeScreen extends AppCompatActivity {
         }
     }
     private void init(){
-        map = (Button) findViewById(R.id.btnToMap);
+        map = (ImageView) findViewById(R.id.btnToMap);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

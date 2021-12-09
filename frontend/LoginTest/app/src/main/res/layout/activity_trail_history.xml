@@ -21,30 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.277" />
 
-    <Button
-        android:id="@+id/btnBackToUserInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Info"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <Button
-        android:id="@+id/btnReviewRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add a Review!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.914"
-        app:layout_constraintStart_toEndOf="@+id/btnBackToUserInfo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
-
     <TextView
         android:id="@+id/txtTrailHistoryHeader"
         android:layout_width="197dp"
@@ -57,5 +33,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.133" />
+
+    <ImageView
+        android:id="@+id/btnReviewRating"
+        android:layout_width="61dp"
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtTrailHistoryHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintStart_toEndOf="@+id/btnBackToUserInfo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513"
+        app:srcCompat="@drawable/review" />
+
+    <ImageView
+        android:id="@+id/btnBackToUserInfo"
+        android:layout_width="50dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtTrailHistoryHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55"
+        app:srcCompat="@drawable/userinfo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

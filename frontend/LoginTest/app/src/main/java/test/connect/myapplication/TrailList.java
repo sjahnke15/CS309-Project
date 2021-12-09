@@ -1,22 +1,23 @@
 package test.connect.myapplication;
 
 import static test.connect.myapplication.api.ApiClientFactory.GetTrailApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
 import test.connect.myapplication.api.SlimCallback;
-import test.connect.myapplication.model.Review;
 import test.connect.myapplication.model.Trail;
 
 public class TrailList extends AppCompatActivity {
-Button backToMap;
+    ImageView backToMap;
 
 
 
@@ -25,7 +26,7 @@ Button backToMap;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail_list2);
         Button ToReview = findViewById(R.id.btnReviewTrail);
-        Button Refresh = findViewById(R.id.btnRefresh);
+        ImageView Refresh = findViewById(R.id.btnRefresh);
 
         TextView TrailName1 = findViewById(R.id.txtTrail1);
         TextView TrailName2 = findViewById(R.id.txtTrail2);
@@ -41,6 +42,18 @@ Button backToMap;
         TextView TrailDiff2 = findViewById(R.id.txtDifficultyTrail2);
         TextView TrailRating2 = findViewById(R.id.txtRatingTrail2);
 
+        TextView TrailDist3 = findViewById(R.id.txtDistanceTrail3);
+        TextView TrailDiff3 = findViewById(R.id.txtDifficultyTrail3);
+        TextView TrailRating3 = findViewById(R.id.txtRatingTrail3);
+
+        TextView TrailDist4 = findViewById(R.id.txtDistanceTrail4);
+        TextView TrailDiff4 = findViewById(R.id.txtDifficultyTrail4);
+        TextView TrailRating4 = findViewById(R.id.txtRatingTrail4);
+
+        TextView TrailDist5 = findViewById(R.id.txtDistanceTrail5);
+        TextView TrailDiff5 = findViewById(R.id.txtDifficultyTrail5);
+        TextView TrailRating5 = findViewById(R.id.txtRatingTrail5);
+
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         String email = intent.getStringExtra("email");
@@ -53,15 +66,27 @@ Button backToMap;
                 GetTrailApi().getAllTrails().enqueue(new SlimCallback<List<Trail>>(trails->{
                     TrailName1.setText("");
                     for (int i = 0; i < trails.size(); i++){
-                        if(i == 0){
+                        if(i == 3){
                             TrailName1.setText(trails.get(i).getName());
                             TrailDist1.setText("Placeholder");
                             TrailDiff1.setText(String.valueOf(trails.get(i).getDifficulty()));
                             TrailRating1.setText("Placeholder");
                         }
-                        else if(i == 1){
+                        else if(i == 4){
                             TrailName2.setText(trails.get(i).getName());
                             TrailDiff2.setText(String.valueOf(trails.get(i).getDifficulty()));
+                        }
+                        else if(i == 5){
+                            TrailName3.setText(trails.get(i).getName());
+                            TrailDiff3.setText(String.valueOf(trails.get(i).getDifficulty()));
+                        }
+                        else if(i == 6){
+                            TrailName4.setText(trails.get(i).getName());
+                            TrailDiff4.setText(String.valueOf(trails.get(i).getDifficulty()));
+                        }
+                        else if(i == 7){
+                            TrailName5.setText(trails.get(i).getName());
+                            TrailDiff5.setText(String.valueOf(trails.get(i).getDifficulty()));
                         }
                     }
 
@@ -70,7 +95,7 @@ Button backToMap;
         });
 
 
-        backToMap = (Button)findViewById(R.id.btnBackToMap);
+        backToMap = (ImageView)findViewById(R.id.btnBackToMap);
         backToMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

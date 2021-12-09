@@ -90,7 +90,7 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
         String password = intent.getStringExtra("password");
         int userID = intent.getIntExtra("userID", 0);
 
-        Button btnWildlife = (Button)findViewById(R.id.toWildLife);
+        ImageView btnWildlife = (ImageView)findViewById(R.id.toWildLife);
         btnWildlife.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +103,7 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
             }
         });
 
-        Button btnTrailInfo = (Button)findViewById(R.id.toTrailInfo);
+        ImageView btnTrailInfo = (ImageView)findViewById(R.id.toTrailInfo);
         btnTrailInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,11 +116,24 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
             }
         });
 
-        Button btnBack = (Button)findViewById(R.id.toHomeScreen);
+        ImageView btnBack = (ImageView)findViewById(R.id.toHomeScreen);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent userInfo = new Intent(GoogleMaps.this,homeScreen.class);
+                userInfo.putExtra("username", username);
+                userInfo.putExtra("email", email);
+                userInfo.putExtra("password", password);
+                userInfo.putExtra("userID", userID);
+                startActivity(userInfo);
+            }
+        });
+
+        ImageView btnTrailList = (ImageView)findViewById(R.id.toTrailList);
+        btnTrailList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userInfo = new Intent(GoogleMaps.this,TrailList.class);
                 userInfo.putExtra("username", username);
                 userInfo.putExtra("email", email);
                 userInfo.putExtra("password", password);
