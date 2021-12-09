@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"coms309.trailtraveler.backend.controller","l":"ReviewController"},{"p":"coms309.trailtraveler.backend.controller","l":"TrailController"},{"p":"coms309.trailtraveler.backend.controller","l":"UserController"}];updateSearchResults();

@@ -26,6 +26,11 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_fk", referencedColumnName = "userID")
 	List<Review> reviews = new ArrayList<>();
+	
+	/**  **/
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_fk1", referencedColumnName = "userID")
+	List<Trail> completedTrails = new ArrayList<>();
 
 	/**  **/
 	private String email;
@@ -86,5 +91,9 @@ public class User {
 	/**  **/
 	public void addReview(Review r) {
 		reviews.add(r);
+	}
+	
+	public void addCompletedTrail(Trail t) {
+		completedTrails.add(t);
 	}
 }

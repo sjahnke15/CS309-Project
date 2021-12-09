@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import coms309.trailtraveler.backend.model.Trail;
 import coms309.trailtraveler.backend.model.User;
 import coms309.trailtraveler.backend.repository.UserRepository;
 
@@ -13,6 +14,8 @@ public class UserService {
 
 	@Autowired
 	UserRepository uRepo;
+	
+	TrailService tServ;
 	
 	/**
 	 * Retrieves a list of all users from the user repository
@@ -106,5 +109,11 @@ public class UserService {
 		}
 		user.setPassword(nP);
 		return 0;
+	}
+	
+	public Trail postCompletedTrail(int trailID, String username) {
+		User user = retrieveUserByUsername(username);
+		user.addCompletedTrail(tServ.retrieveTrailByID(trailID));
+		return tServ.retrieveTrailByID(trailID);
 	}
 }

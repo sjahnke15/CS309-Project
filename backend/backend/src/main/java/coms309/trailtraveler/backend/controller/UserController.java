@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import coms309.trailtraveler.backend.model.Review;
+import coms309.trailtraveler.backend.model.Trail;
 import coms309.trailtraveler.backend.model.User;
 import coms309.trailtraveler.backend.service.UserService;
 
@@ -67,5 +69,10 @@ public class UserController {
 	@PostMapping("user/post/{email/username}/{password}/{newPassword}")
 	int setNewPassword(@PathVariable String user, @PathVariable String password, @PathVariable String newPassword) {
 		return us.newPassword(user, password, newPassword);
+	}
+	
+	@PostMapping("trail/post/{rating}/{text}/{trailName}/{userID}")
+	Trail postCompletedTrail(@PathVariable int trailID, @PathVariable String username) throws Exception {
+		return us.postCompletedTrail(trailID, username);
 	}
 }
