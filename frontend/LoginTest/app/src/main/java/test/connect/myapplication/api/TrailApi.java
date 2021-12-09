@@ -28,7 +28,7 @@ public interface TrailApi {
     Call<Trail> PostTrailByPath(@Path("n") String name, @Path("d") int difficulty, @Path("l") int distance);
 
     @GET("trail/averageRating/{trailName}")
-    Call<List<Trail>> getAverageTrailRating();
+    Call<Trail> getAverageTrailRating(@Path("trailName") String trailName);
 
     @GET("trail/id/{id}")
     Call<List<Trail>> getTrailByID();

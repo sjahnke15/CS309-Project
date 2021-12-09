@@ -68,29 +68,38 @@ public class TrailList extends AppCompatActivity {
                     for (int i = 0; i < trails.size(); i++){
                         if(i == 3){
                             TrailName1.setText(trails.get(i).getName());
-                            TrailDist1.setText("Placeholder");
+                            TrailDist1.setText(String.valueOf(trails.get(i).getDistance()));
                             TrailDiff1.setText(String.valueOf(trails.get(i).getDifficulty()));
-                            TrailRating1.setText("Placeholder");
+                            TrailRating1.setText(String.valueOf(trails.get(i).getTrailRating()));
                         }
                         else if(i == 4){
                             TrailName2.setText(trails.get(i).getName());
+                            TrailDist2.setText(String.valueOf(trails.get(i).getDistance()));
                             TrailDiff2.setText(String.valueOf(trails.get(i).getDifficulty()));
+                            TrailRating2.setText(String.valueOf(trails.get(i).getTrailRating()));
                         }
                         else if(i == 5){
                             TrailName3.setText(trails.get(i).getName());
+                            TrailDist3.setText(String.valueOf(trails.get(i).getDistance()));
                             TrailDiff3.setText(String.valueOf(trails.get(i).getDifficulty()));
+                            TrailRating3.setText(String.valueOf(trails.get(i).getTrailRating()));
                         }
                         else if(i == 6){
                             TrailName4.setText(trails.get(i).getName());
+                            TrailDist4.setText(String.valueOf(trails.get(i).getDistance()));
                             TrailDiff4.setText(String.valueOf(trails.get(i).getDifficulty()));
+                            TrailRating4.setText(String.valueOf(trails.get(i).getTrailRating()));
                         }
                         else if(i == 7){
                             TrailName5.setText(trails.get(i).getName());
+                            TrailDist5.setText(String.valueOf(trails.get(i).getDistance()));
                             TrailDiff5.setText(String.valueOf(trails.get(i).getDifficulty()));
+                            TrailRating5.setText(String.valueOf(trails.get(i).getTrailRating()));
                         }
                     }
 
                 }, "multipleTrailsApi"));
+
             }
         });
 
