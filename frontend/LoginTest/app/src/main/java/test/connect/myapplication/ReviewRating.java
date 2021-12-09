@@ -20,7 +20,6 @@ import test.connect.myapplication.model.Review;
 
 public class ReviewRating extends AppCompatActivity {
     ImageView back;
-    ImageView toTrailInfo;
     RatingBar ratingBar;
     TextView leaveReview;
     Button submit;
@@ -83,17 +82,5 @@ public class ReviewRating extends AppCompatActivity {
             }
         });
 
-        toTrailInfo = (ImageView)findViewById(R.id.btnTrailInfo);
-        toTrailInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent trailInfo = new Intent(ReviewRating.this, TrailInfo.class);
-                trailInfo.putExtra("username", username);
-                trailInfo.putExtra("email", email);
-                trailInfo.putExtra("password", password);
-                trailInfo.putExtra("userID", userID);
-                startActivity(trailInfo);
-            }
-        });
     }
 }
