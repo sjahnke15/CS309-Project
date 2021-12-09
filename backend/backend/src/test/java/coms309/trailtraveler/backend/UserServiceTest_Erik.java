@@ -62,6 +62,74 @@ public class UserServiceTest_Erik {
 	private TrailRepository tRepo;
 	
 	@Test
+	public void testGetUserByEmail() {
+		List<User> uList = new ArrayList<>();
+		
+		when(uRepo.findAll()).thenReturn(uList);
+		when(uRepo.save((User)any(User.class))).thenAnswer(x -> {
+			User u = x.getArgument(0);
+			uList.add(u);
+			return null;
+		});
+		
+		User u1 = new User();
+		u1.setEmail("esraman@iastate.edu");
+		u1.setUsername("ramanKid");
+		u1.setPassword("testPass");
+		uRepo.save(u1);
+		
+		User u2 = new User();
+		u2.setEmail("caraman@iastate.edu");
+		u2.setUsername("ramanKid2");
+		u2.setPassword("testPass2");
+		uRepo.save(u2);
+		
+		User u3 = new User();
+		u3.setEmail("lameEmail@gmail.com");
+		u3.setUsername("someoneElse");
+		u3.setPassword("testPass3");
+		uRepo.save(u3);
+		
+		assertEquals("esraman@iastate.edu", uServ.retrieveUserByEmail("esraman@iastate.edu").getEmail());
+		assertEquals("ramanKid2", uServ.retrieveUserByEmail("caraman@iastate.edu").getUsername());
+		assertEquals("testPass3", uServ.retrieveUserByEmail("lameEmail@gmail.com").getPassword()); 
+	}
+	
+	@Test
+	public void testGetUserByUsername() {
+		List<User> uList = new ArrayList<>();
+		
+		when(uRepo.findAll()).thenReturn(uList);
+		when(uRepo.save((User)any(User.class))).thenAnswer(x -> {
+			User u = x.getArgument(0);
+			uList.add(u);
+			return null;
+		});
+		
+		User u1 = new User();
+		u1.setEmail("esraman@iastate.edu");
+		u1.setUsername("ramanKid");
+		u1.setPassword("testPass");
+		uRepo.save(u1);
+		
+		User u2 = new User();
+		u2.setEmail("caraman@iastate.edu");
+		u2.setUsername("ramanKid2");
+		u2.setPassword("testPass2");
+		uRepo.save(u2);
+		
+		User u3 = new User();
+		u3.setEmail("lameEmail@gmail.com");
+		u3.setUsername("someoneElse");
+		u3.setPassword("testPass3");
+		uRepo.save(u3);
+		
+		assertEquals("esraman@iastate.edu", uServ.retrieveUserByUsername("ramanKid").getEmail());
+		assertEquals("ramanKid2", uServ.retrieveUserByUsername("ramanKid2").getUsername());
+		assertEquals("testPass3", uServ.retrieveUserByUsername("someoneElse").getPassword()); 
+	}
+	
+	@Test
 	public void testGetTrailByID() {
 		List<Trail> tList = new ArrayList<>();
 		
