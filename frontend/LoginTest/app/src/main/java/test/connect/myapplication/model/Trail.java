@@ -11,6 +11,8 @@ public class Trail {
     private List<Review> reviews;
     private String name;
     private int difficulty;
+    private int distance;
+    private double trailRating;
 
     /**
      * Default constructor for Trail object
@@ -80,5 +82,21 @@ public class Trail {
      */
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public double getTrailRating() {
+        return trailRating;
+    }
+
+    public void setTrailRating(double trailRating) {
+        this.trailRating = trailRating;
     }
 }
