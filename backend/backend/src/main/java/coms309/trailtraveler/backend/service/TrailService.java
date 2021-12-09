@@ -1,12 +1,10 @@
 package coms309.trailtraveler.backend.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import coms309.trailtraveler.backend.model.Review;
 import coms309.trailtraveler.backend.model.Trail;
 import coms309.trailtraveler.backend.repository.TrailRepository;
 
@@ -34,11 +32,10 @@ public class TrailService {
 	 * @return
 	 * The new trail
 	 **/
-	public Trail postTrail(String n, int d, int di) {
+	public Trail postTrail(String n, int d) {
 		Trail trail = new Trail();
 		trail.setName(n);
 		trail.setDifficulty(d);
-		trail.setDistance(di);
 		tRepo.save(trail);
 		return trail;
 	}
@@ -96,17 +93,5 @@ public class TrailService {
 			}
 		}
 		return trailList;
-	}
-
-	/** Returns -1 if there is no trail, and returns 0 if there is no review for that trail. **/
-	public double retrieveTrailRating(String trailName) {
-		
-		List<Trail> trailList = tRepo.findAll();
-		for(int i = 0; i < trailList.size(); i++) {
-			if(trailList.get(i).getName().equals(trailName)) {
-				return trailList.get(i).getAverageRating();
-			}
-		}
-		return -1;
 	}
 }
