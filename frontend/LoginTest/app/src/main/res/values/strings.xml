@@ -11,8 +11,11 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string-array name="Trails">
-        <item>Test</item>
-        <item>Fern Creek</item>
+        <item>Yellowstone</item>
+        <item>Grand Canyon</item>
+        <item>Lake Tahoe</item>
+        <item>Yosemite</item>
+        <item>Moab</item>
     </string-array>
     <string name="title_activity_google">Google</string>
 </resources>

@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -120,6 +121,19 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
             @Override
             public void onClick(View view) {
                 Intent userInfo = new Intent(GoogleMaps.this,homeScreen.class);
+                userInfo.putExtra("username", username);
+                userInfo.putExtra("email", email);
+                userInfo.putExtra("password", password);
+                userInfo.putExtra("userID", userID);
+                startActivity(userInfo);
+            }
+        });
+
+        ImageView btnTrailList = (ImageView)findViewById(R.id.toTrailList);
+        btnTrailList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userInfo = new Intent(GoogleMaps.this,TrailList.class);
                 userInfo.putExtra("username", username);
                 userInfo.putExtra("email", email);
                 userInfo.putExtra("password", password);
