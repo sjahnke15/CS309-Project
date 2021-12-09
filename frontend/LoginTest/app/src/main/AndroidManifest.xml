@@ -45,9 +45,6 @@
             android:name=".Wildlife"
             android:exported="true" />
         <activity
-            android:name=".TrailInfo"
-            android:exported="true" />
-        <activity
             android:name=".ReviewRating"
             android:exported="true" />
         <activity
