@@ -46,6 +46,7 @@ public class Wildlife extends AppCompatActivity {
             public void onClick(View view) {
                 Intent back = new Intent(Wildlife.this, GoogleMaps.class);
                 wsc.close();
+                messageOutput.setText("");
                 back.putExtra("username", username);
                 back.putExtra("email", email);
                 back.putExtra("password", password);
