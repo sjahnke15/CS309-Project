@@ -24,7 +24,19 @@ public interface TrailApi {
      * @param name entered trail name
      * @param difficulty entered trail difficulty
      */
-    @POST("trail/post/{n}/{d}")
-    Call<Trail> PostTrailByPath(@Path("n") String name, @Path("d") int difficulty);
+    @POST("trail/post/{n}/{d}/{l}")
+    Call<Trail> PostTrailByPath(@Path("n") String name, @Path("d") int difficulty, @Path("l") int distance);
+
+    @GET("trail/averageRating/{trailName}")
+    Call<List<Trail>> getAverageTrailRating();
+
+    @GET("trail/id/{id}")
+    Call<List<Trail>> getTrailByID();
+
+    @GET("trail/name/{name}")
+    Call<List<Trail>> getTrailByName();
+
+    @GET("trail/difficulty/{difficulty}")
+    Call<List<Trail>> getTrailListByDifficulty();
 
 }
