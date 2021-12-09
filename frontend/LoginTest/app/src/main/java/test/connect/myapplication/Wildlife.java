@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class Wildlife extends AppCompatActivity {
-    Button back;
+    ImageView back;
     Button send;
     TextView messageOutput;
     EditText messageInput;
@@ -39,7 +40,7 @@ public class Wildlife extends AppCompatActivity {
 
         connectWebSocket(username);
 
-        back = (Button)findViewById(R.id.btnMapFromWildlife);
+        back = (ImageView)findViewById(R.id.btnMapFromWildlife);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
