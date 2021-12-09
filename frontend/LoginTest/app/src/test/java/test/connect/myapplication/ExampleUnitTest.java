@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import test.connect.myapplication.api.Main;
 import test.connect.myapplication.model.User;
 import test.connect.myapplication.model.LoginTest;
 
@@ -35,5 +36,12 @@ public class ExampleUnitTest {
         user.setPassword("Password");
         assertEquals(false, logintest.canLogIn(user, password));
 
+    }
+
+    @Test
+    public void feelsLike(){
+        Main weather = new Main();
+        weather.setFeels_like("18.2");
+        assertEquals(true, weather.getFeels_like().equals("18.2"));
     }
 }
