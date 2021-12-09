@@ -13,7 +13,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -75,6 +74,13 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_maps);
         mSearchText = (EditText) findViewById(R.id.input_search);
@@ -83,12 +89,6 @@ public class GoogleMaps extends AppCompatActivity implements OnMapReadyCallback 
         getLocationPermission();
 
         init();
-
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String email = intent.getStringExtra("email");
-        String password = intent.getStringExtra("password");
-        int userID = intent.getIntExtra("userID", 0);
 
         ImageView btnWildlife = (ImageView)findViewById(R.id.toWildLife);
         btnWildlife.setOnClickListener(new View.OnClickListener() {

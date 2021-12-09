@@ -126,11 +126,21 @@ public class homeScreen extends AppCompatActivity {
         }
     }
     private void init(){
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String email = intent.getStringExtra("email");
+        String password = intent.getStringExtra("password");
+        int userID = intent.getIntExtra("userID", 0);
+        
         map = (ImageView) findViewById(R.id.btnToMap);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(homeScreen.this, GoogleMaps.class);
+                intent.putExtra("username", username);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
             }
         });
