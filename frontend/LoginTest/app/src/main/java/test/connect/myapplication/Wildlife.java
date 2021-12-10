@@ -73,7 +73,7 @@ public class Wildlife extends AppCompatActivity {
     }
 
     public void connectWebSocket(String username) {
-        String socket = "http://10.0.2.2:8080/chat/" + username;
+        String socket = "http://coms-309-029.cs.iastate.edu:8080/chat/" + username;
         Log.i("Connection", socket);
         URI uri;
 
