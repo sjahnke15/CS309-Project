@@ -89,6 +89,7 @@ public class Trail {
 	}
 
 	public double getAverageRating() {
+		if(reviews.isEmpty()) return -1;
 		double sum = 0;
 		for(int j = 0; j < reviews.size(); j++) {
 			sum += reviews.get(j).getRating();
