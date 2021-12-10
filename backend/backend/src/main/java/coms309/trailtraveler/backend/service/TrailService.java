@@ -107,6 +107,6 @@ public class TrailService {
 				return trailList.get(i).getAverageRating();
 			}
 		}
-		return -1;
+		return -2;
 	}
 }
